@@ -124,7 +124,10 @@ ngApp.controller('myValidatorController', function($scope) {
 		}
 		// DOWNLOAD SERVICE
 		if ($scope.select.typeResource == "downloadservice") {
-			if (($scope.select.typeResource == "downloadservice") && ($scope.select.downloadServiceType == "WFS") && ($scope.select.downloadSubServiceType == "direct3")) $scope.restservice.testsuiteid = "EIDed2d3501-d700-4ff9-b9bf-070dece8ddbd";
+			console.log($scope.select.typeResource);
+			console.log($scope.select.downloadServiceType);
+			console.log($scope.select.downloadSubServiceType);
+			if (($scope.select.typeResource == "downloadservice") && ($scope.select.downloadServiceType == "WFS") && ($scope.select.downloadSubServiceType == "direct3")) $scope.restservice.testsuiteid = ["EIDed2d3501-d700-4ff9-b9bf-070dece8ddbd", "EID174edf55-699b-446c-968c-1892a4d8d5bd"];
 			if (($scope.select.typeResource == "downloadservice") && ($scope.select.downloadServiceType == "WFS") && ($scope.select.downloadSubServiceType == "direct2")) $scope.restservice.testsuiteid = "EID174edf55-699b-446c-968c-1892a4d8d5bd";
 			if (($scope.select.typeResource == "downloadservice") && ($scope.select.downloadServiceType == "WFS") && ($scope.select.downloadSubServiceType == "direct1")) $scope.restservice.testsuiteid = "EID18d66578-6ad6-3d3d-a090-0cf885c61de1";
 			if (($scope.select.typeResource == "downloadservice") && ($scope.select.downloadServiceType == "WFS") && ($scope.select.downloadSubServiceType == "predefined")) $scope.restservice.testsuiteid = "EID174edf55-699b-446c-968c-1892a4d8d5bd";
