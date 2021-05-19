@@ -191,6 +191,13 @@ ngApp.controller('myValidatorController', function($scope) {
 				if ($("#dataset-hn-options-4").prop("checked") == true) arrayTestsuiteid.push("EIDe008001b-5233-4081-a1ae-515d7702ce02");
 				if (($("#dataset-hn-options-10").prop("checked") == false) && ($("#dataset-hn-options-8").prop("checked") == false) && ($("#dataset-hn-options-6").prop("checked") == false) && ($("#dataset-hn-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID81b070d3-b17f-430b-abee-456268346912");
 			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("OI"))) {
+				if ($("#dataset-oi-options-10").prop("checked") == true) arrayTestsuiteid.push("EID1b65c0d1-6374-4638-a489-86ba4d5c39d6");
+				if ($("#dataset-oi-options-8").prop("checked") == true) arrayTestsuiteid.push("EID3476ab51-fd62-4b19-a563-f3c05373c2ed");
+				if ($("#dataset-oi-options-6").prop("checked") == true) arrayTestsuiteid.push("EIDdd6d5c5f-6d38-45a1-b85d-b9f2606bff2d");
+				if ($("#dataset-oi-options-4").prop("checked") == true) arrayTestsuiteid.push("EID46af85e3-f8cc-4812-b8b7-36d99897084c");
+				if (($("#dataset-oi-options-10").prop("checked") == false) && ($("#dataset-oi-options-8").prop("checked") == false) && ($("#dataset-oi-options-6").prop("checked") == false) && ($("#dataset-oi-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID2151146d-da46-4242-9471-0918db59abb5");
+			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("HY") && $scope.select.subHydro.includes("HPW"))) {
 				if ($("#dataset-hpw-options-10").prop("checked") == true) arrayTestsuiteid.push("EID122b2f38-302f-4271-9653-69cf86fcb5c4");
 				if ($("#dataset-hpw-options-8").prop("checked") == true) arrayTestsuiteid.push("EID893b7541-c9cb-4e0a-9f84-5d55cad1866c");
@@ -1699,6 +1706,19 @@ ngApp.controller('myValidatorController', function($scope) {
 			$scope.selectDatasetAnnexHYDAdvanced('application_schema_hydrogeology');
 			$("#dataset-hyd-options-3").prop("checked", true);
 			$scope.selectDatasetAnnexHYDAdvanced('gml_application_schemas_geology');
+		}
+		if (datasetType == 'OI') {
+			$scope.select.atLeastOneOI = 0;
+			$("#dataset-oi-options-10").prop("checked", true);
+			$scope.selectDatasetAnnexOIAdvanced('reference_systems_orthoimagery');
+			$("#dataset-oi-options-8").prop("checked", true);
+			$scope.selectDatasetAnnexOIAdvanced('information_accessibility_orthoimagery');
+			$("#dataset-oi-options-6").prop("checked", true);
+			$scope.selectDatasetAnnexOIAdvanced('data_consistency_orthoimagery');
+			$("#dataset-oi-options-4").prop("checked", true);
+			$scope.selectDatasetAnnexOIAdvanced('application_schema_orthoimagery');
+			$("#dataset-oi-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexOIAdvanced('gml_application_schemas_orthoimagery');
 		}
 		if (datasetType == 'LCR') {
 			$scope.select.atLeastOneLCR = 0;
@@ -3711,6 +3731,77 @@ ngApp.controller('myValidatorController', function($scope) {
 			} else {
 				$scope.select.atLeastOneLCV--;
 				$("#dataset-lcv-options-10").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
+	$scope.selectDatasetAnnexOIAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-oi-options-1").prop("checked");
+			$("#dataset-oi-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-oi-options-2").prop("checked");
+			$("#dataset-oi-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_orthoimagery') {
+			if ($("#dataset-oi-options-4").prop("checked") == true) {
+				$("#dataset-oi-options-3").prop("checked", true);
+			} else {
+				$("#dataset-oi-options-3").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_orthoimagery') {
+			if ($("#dataset-oi-options-4").prop("checked") == true) {
+				$scope.select.atLeastOneOI++;
+				$("#dataset-oi-options-3").prop("checked", true);
+				$("#dataset-oi-options-2").prop("checked", true);
+				$("#dataset-oi-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneOI--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-oi-options-5").prop("checked");
+			$("#dataset-oi-options-5").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_orthoimagery') {
+			if ($("#dataset-oi-options-6").prop("checked") == true) {
+				$scope.select.atLeastOneOI++;
+				$("#dataset-oi-options-5").prop("checked", true);
+				$("#dataset-oi-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneOI--;
+				$("#dataset-oi-options-5").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-oi-options-7").prop("checked");
+			$("#dataset-oi-options-7").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_orthoimagery') {
+			if ($("#dataset-oi-options-8").prop("checked") == true) {
+				$scope.select.atLeastOneOI++;
+				$("#dataset-oi-options-7").prop("checked", true);
+				$("#dataset-oi-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneOI--;
+				$("#dataset-oi-options-7").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-oi-options-9").prop("checked");
+			$("#dataset-oi-options-9").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_orthoimagery') {
+			if ($("#dataset-oi-options-10").prop("checked") == true) {
+				$scope.select.atLeastOneOI++;
+				$("#dataset-oi-options-9").prop("checked", true);
+				$("#dataset-oi-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneOI--;
+				$("#dataset-oi-options-9").prop("checked", false);
 			}
 		}
 		$scope.prefillLabel();

@@ -624,7 +624,7 @@
                         <option value="1">Elevation (EL)</option>
                         <option value="2">Geology (GE)</option>
                         <option value="3">Land cover (LC)</option>
-                        <option value="4" disabled>Orthoimagery (OI)</option>
+                        <option value="4">Orthoimagery (OI)</option>
                       </select>
                     </td>
                     <td>
@@ -2452,6 +2452,83 @@
                         </svg></span>Conformance Class 'Reference systems, Geology' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-ge/master/ge-rs">source</a>)</label>
                   </div>
                 </fieldset>
+
+                <!-- Orthoimagery (OI) -->
+                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('OI')">
+                  <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed for ANNEX II - Orthoimagery (OI)</legend>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-oi-options-1"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOIAdvanced('inspire_gml_encoding')"/><label class="ecl-checkbox__label" for="dataset-oi-options-1"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML encoding' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-encoding/master/inspire-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-oi-options-2"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOIAdvanced('gml_application_schemas')"/><label class="ecl-checkbox__label" for="dataset-oi-options-2"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML application schemas' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/schemas">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-oi-options-3"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOIAdvanced('gml_application_schemas_orthoimagery')"/><label class="ecl-checkbox__label" for="dataset-oi-options-3"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'GML application schemas, Orthoimagery' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-oi/master/oi-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-oi-options-4"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOIAdvanced('application_schema_orthoimagery')"/><label class="ecl-checkbox__label" for="dataset-oi-options-4"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application Schema, Orthoimagery' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-oi/master/oi-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-oi-options-5"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOIAdvanced('data_consistency')"/><label class="ecl-checkbox__label" for="dataset-oi-options-5"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/data-consistency">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-oi-options-6"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOIAdvanced('data_consistency_orthoimagery')"/><label class="ecl-checkbox__label" for="dataset-oi-options-6"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency, Orthoimagery' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-oi/master/oi-dc">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-oi-options-7"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOIAdvanced('information_accessibility')"/><label class="ecl-checkbox__label" for="dataset-oi-options-7"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/information-accessibility">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-oi-options-8"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOIAdvanced('information_accessibility_orthoimagery')"/><label class="ecl-checkbox__label" for="dataset-oi-options-8"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility, Orthoimagery' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-oi/master/oi-ia">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-oi-options-9"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOIAdvanced('reference_systems')"/><label class="ecl-checkbox__label" for="dataset-oi-options-9"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/reference-systems">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-oi-options-10"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOIAdvanced('reference_systems_orthoimagery')"/><label class="ecl-checkbox__label" for="dataset-oi-options-10"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems, Orthoimagery' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-oi/master/oi-rs">source</a>)</label>
+                  </div>
+                </fieldset>
+
+
 
 
 
