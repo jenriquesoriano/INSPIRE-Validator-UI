@@ -640,6 +640,7 @@ ngApp.controller('myValidatorController', function($scope) {
 		if (($scope.select.datasetType.includes('EL')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex II - Elevation (EL)";
 		if (($scope.select.datasetType.includes('GE')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex II - Geology (GE)";
 		if (($scope.select.datasetType.includes('LC')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex II - Land Cover (LC)";
+		if (($scope.select.datasetType.includes('OI')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex II - Orthoimagery (OI)";
 		if (($scope.select.datasetType.includes('AM')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Area management / restriction / regulation zones & reporting units (AM)";
 		if (($scope.select.datasetType.includes('BR')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Bio-geographical regions (BR)";
 		if (($scope.select.datasetType.includes('BU')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Buildings (BU)";
@@ -5585,7 +5586,7 @@ ngApp.controller('myValidatorController', function($scope) {
 		$scope.prefillLabel();
 	}
 
-	$scope.sendRunRequest = function() {
+$scope.sendRunRequest = function() {
 		//$scope.prefillLabel();
 		var testSuiteIdToBeSent;
 		var error = false;
@@ -5620,7 +5621,6 @@ ngApp.controller('myValidatorController', function($scope) {
 			if (remoteFile != "") {
 				var txtUsername = $("#text-input-username").val();
 				var txtPassword = $("#text-input-password").val();
-				//if ((txtUsername.trim() != "") && (txtPassword.trim() != "")) {   // CHANGED BY THE CONTRACTOR
 				if ($('#file-upload-id').text().includes("Service URL")) {
 					var testRunRequest = {
 						"label": label,
@@ -5634,6 +5634,7 @@ ngApp.controller('myValidatorController', function($scope) {
 							}
 						}
 					}
+					
 				} else {
 					var testRunRequest = {
 						"label": label,
