@@ -363,6 +363,13 @@ ngApp.controller('myValidatorController', function($scope) {
 					}
 				}
 			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("AF"))) {
+				if ($("#dataset-af-options-10").prop("checked") == true) arrayTestsuiteid.push("EID2d2491df-b01e-4527-a089-82d6ffa88a80");
+				if ($("#dataset-af-options-8").prop("checked") == true) arrayTestsuiteid.push("EID36dec890-a302-442e-ae35-1edcfa5ca4dd");
+				if ($("#dataset-af-options-6").prop("checked") == true) arrayTestsuiteid.push("EID1ca3be4d-1953-45c7-960c-4e87dd1bc487");
+				if ($("#dataset-af-options-4").prop("checked") == true) arrayTestsuiteid.push("EIDd718e45d-8cdb-4876-957a-51a35ba9fafa");
+				if (($("#dataset-af-options-10").prop("checked") == false) && ($("#dataset-af-options-8").prop("checked") == false) && ($("#dataset-af-options-6").prop("checked") == false) && ($("#dataset-af-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID2e792ebf-e98e-42d3-850d-80bbb0b568b9");
+			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("AM"))) {
 				if ($("#dataset-am-options-10").prop("checked") == true) arrayTestsuiteid.push("EID39f95104-d438-4462-a9d6-6e9ae25b261c");
 				if ($("#dataset-am-options-8").prop("checked") == true) arrayTestsuiteid.push("EIDf55d5e5a-e6be-4ab7-85b8-d8fedc129c65");
@@ -641,6 +648,7 @@ ngApp.controller('myValidatorController', function($scope) {
 		if (($scope.select.datasetType.includes('GE')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex II - Geology (GE)";
 		if (($scope.select.datasetType.includes('LC')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex II - Land Cover (LC)";
 		if (($scope.select.datasetType.includes('OI')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex II - Orthoimagery (OI)";
+		if (($scope.select.datasetType.includes('AF')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Agricultural and aquaculture facilities (AF)";
 		if (($scope.select.datasetType.includes('AM')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Area management / restriction / regulation zones & reporting units (AM)";
 		if (($scope.select.datasetType.includes('BR')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Bio-geographical regions (BR)";
 		if (($scope.select.datasetType.includes('BU')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Buildings (BU)";
@@ -899,6 +907,10 @@ ngApp.controller('myValidatorController', function($scope) {
 				}
 			}
 			if (selectedAnnex3 > 0) {
+				if ($scope.selectedOptionsAnnex3.includes("1")) {
+					$scope.select.datasetType.push("AF");
+					$scope.selectDatasetType('AF');
+				}
 				if ($scope.selectedOptionsAnnex3.includes("2")) {
 					$scope.select.datasetType.push("AM");
 					$scope.selectDatasetType('AM');
@@ -1746,6 +1758,19 @@ ngApp.controller('myValidatorController', function($scope) {
 			$scope.selectDatasetAnnexLCVAdvanced('application_schema_landcover_vector');
 			$("#dataset-lcv-options-3").prop("checked", true);
 			$scope.selectDatasetAnnexLCVAdvanced('gml_application_schemas_landcover');
+		}
+		if (datasetType == 'AF') {
+			$scope.select.atLeastOneAF = 0;
+			$("#dataset-af-options-10").prop("checked", true);
+			$scope.selectDatasetAnnexAFAdvanced('reference_systems_agricultural');
+			$("#dataset-af-options-8").prop("checked", true);
+			$scope.selectDatasetAnnexAFAdvanced('information_accessibility_agricultural');
+			$("#dataset-af-options-6").prop("checked", true);
+			$scope.selectDatasetAnnexAFAdvanced('data_consistency_agricultural');
+			$("#dataset-af-options-4").prop("checked", true);
+			$scope.selectDatasetAnnexAFAdvanced('application_schema_agricultural');
+			$("#dataset-af-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexAFAdvanced('gml_application_schemas_agricultural');
 		}
 		if (datasetType == 'AM') {
 			$scope.select.atLeastOneAM = 0;
@@ -3803,6 +3828,77 @@ ngApp.controller('myValidatorController', function($scope) {
 			} else {
 				$scope.select.atLeastOneOI--;
 				$("#dataset-oi-options-9").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
+	$scope.selectDatasetAnnexAFAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-af-options-1").prop("checked");
+			$("#dataset-af-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-af-options-2").prop("checked");
+			$("#dataset-af-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_agricultural') {
+			if ($("#dataset-af-options-4").prop("checked") == true) {
+				$("#dataset-af-options-3").prop("checked", true);
+			} else {
+				$("#dataset-af-options-3").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_agricultural') {
+			if ($("#dataset-af-options-4").prop("checked") == true) {
+				$scope.select.atLeastOneAF++;
+				$("#dataset-af-options-3").prop("checked", true);
+				$("#dataset-af-options-2").prop("checked", true);
+				$("#dataset-af-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneAF--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-af-options-5").prop("checked");
+			$("#dataset-af-options-5").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_agricultural') {
+			if ($("#dataset-af-options-6").prop("checked") == true) {
+				$scope.select.atLeastOneAF++;
+				$("#dataset-af-options-5").prop("checked", true);
+				$("#dataset-af-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneAF--;
+				$("#dataset-af-options-5").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-af-options-7").prop("checked");
+			$("#dataset-af-options-7").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_agricultural') {
+			if ($("#dataset-af-options-8").prop("checked") == true) {
+				$scope.select.atLeastOneAF++;
+				$("#dataset-af-options-7").prop("checked", true);
+				$("#dataset-af-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneAF--;
+				$("#dataset-af-options-7").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-af-options-9").prop("checked");
+			$("#dataset-af-options-9").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_agricultural') {
+			if ($("#dataset-af-options-10").prop("checked") == true) {
+				$scope.select.atLeastOneAF++;
+				$("#dataset-af-options-9").prop("checked", true);
+				$("#dataset-af-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneAF--;
+				$("#dataset-af-options-9").prop("checked", false);
 			}
 		}
 		$scope.prefillLabel();
