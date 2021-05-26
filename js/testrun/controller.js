@@ -839,6 +839,18 @@ ngApp.controller('myValidatorController', function($scope) {
 
 			if (testSuiteId == "EIDb64a59e3-5187-4279-801d-fe78e0a79e7a") testSuiteDesc = "Conformance Class 'Application schema, Water Network'";
 
+			if (testSuiteId == "EIDd718e45d-8cdb-4876-957a-51a35ba9fafa") testSuiteDesc = "Conformance class: 'Application Schema, Agricultural and Aquaculture Facilities'";
+			if (testSuiteId == "EID1ca3be4d-1953-45c7-960c-4e87dd1bc487") testSuiteDesc = "Conformance class: 'Data consistency, Agricultural and Aquaculture Facilities'";
+			if (testSuiteId == "EID2e792ebf-e98e-42d3-850d-80bbb0b568b9") testSuiteDesc = "Conformance class: 'GML application schemas, Agricultural and Aquaculture Facilities'";
+			if (testSuiteId == "EID36dec890-a302-442e-ae35-1edcfa5ca4dd") testSuiteDesc = "Conformance class: 'Information accessibility, Agricultural and Aquaculture Facilities'";
+			if (testSuiteId == "EID2d2491df-b01e-4527-a089-82d6ffa88a80") testSuiteDesc = "Conformance class: 'Reference systems, Agricultural and Aquaculture Facilities'";
+
+			if (testSuiteId == "EID46af85e3-f8cc-4812-b8b7-36d99897084c") testSuiteDesc = "Conformance class: 'Application schema, Orthoimagery'";
+			if (testSuiteId == "EIDdd6d5c5f-6d38-45a1-b85d-b9f2606bff2d") testSuiteDesc = "Conformance class: 'Data consistency, Orthoimagery'";
+			if (testSuiteId == "EID2151146d-da46-4242-9471-0918db59abb5") testSuiteDesc = "Conformance class: 'GML application schemas, Orthoimagery'";
+			if (testSuiteId == "EID3476ab51-fd62-4b19-a563-f3c05373c2ed") testSuiteDesc = "Conformance class: 'Information accessibility, Orthoimagery'";
+			if (testSuiteId == "EID1b65c0d1-6374-4638-a489-86ba4d5c39d6") testSuiteDesc = "Conformance class: 'Reference systems, Orthoimagery'";
+
 			return testSuiteDesc;
 		}
 	}
