@@ -907,7 +907,13 @@ ngApp.controller('myValidatorController', function($scope) {
 
 	$scope.sortTestResults = function(field, order) {
 		if (field != "default") {
-			$scope.testResults.sort($scope.dynamicSort(field, order));
+			if (Array.isArray($scope.testResults)) {
+				$scope.testResults.sort($scope.dynamicSort(field, order));
+			} else {
+				var uniqueValue = $scope.testResults;
+				$scope.testResults = [];
+				$scope.testResults.push(uniqueValue);
+			}
 		}
 		if (order == "ASC") {
 			$("#sort_ascending").css("background-color", "#004494");
