@@ -179,29 +179,39 @@ ngApp.controller('myValidatorController', function($scope) {
 			$scope.readDataForm();
 			console.log(data.EtfItemCollection);
 			$scope.numResults = data.EtfItemCollection.returnedItems;
-			$scope.testResults = data.EtfItemCollection.testRuns.TestRun;
-			$scope.searchParameters.numPages = $scope.roundNumber($scope.numResults / $scope.searchParameters.pageSize);
-			$scope.searchParameters.startResult = 1;
-			$scope.searchParameters.endResult = $scope.searchParameters.pageSize;
-			$scope.contentLoaded = true;
-			$scope.sortTestResults('startTimestamp', 'DESC', false)
-			$scope.$apply();
-			var counterRunning = 0;
-			$scope.testResults.forEach(function(item) {
-				var statusAfterRun = item.status;
-				//statusAfterRun = "UNDEFINED";
-				//if (item.status == "UNDEFINED") {
-				//	item.status = "RUNNING";
-				//	statusAfterRun = item.status;
-				//}
-				if ((statusAfterRun == "RUNNING") || (statusAfterRun == "UNDEFINED")) {
-					counterRunning++;
-					if (counterRunning < ($scope.searchParameters.maxRefresh + 1)) {
-						console.log("Esegui refresh su " + item.id);
-						setTimeout($scope.refreshStatusTest, 3000, item.id);
+			if(data.EtfItemCollection.hasOwnProperty('testRuns')){
+				$scope.testResults = data.EtfItemCollection.testRuns.TestRun;
+				$scope.searchParameters.numPages = $scope.roundNumber($scope.numResults / $scope.searchParameters.pageSize);
+				$scope.searchParameters.startResult = 1;
+				$scope.searchParameters.endResult = $scope.searchParameters.pageSize;
+				$scope.contentLoaded = true;
+				$scope.sortTestResults('startTimestamp', 'DESC', false)
+				$scope.$apply();
+				var counterRunning = 0;
+				$scope.testResults.forEach(function(item) {
+					var statusAfterRun = item.status;
+					//statusAfterRun = "UNDEFINED";
+					//if (item.status == "UNDEFINED") {
+					//	item.status = "RUNNING";
+					//	statusAfterRun = item.status;
+					//}
+					if ((statusAfterRun == "RUNNING") || (statusAfterRun == "UNDEFINED")) {
+						counterRunning++;
+						if (counterRunning < ($scope.searchParameters.maxRefresh + 1)) {
+							console.log("Esegui refresh su " + item.id);
+							setTimeout($scope.refreshStatusTest, 3000, item.id);
+						}
 					}
-				}
-			});
+				});
+			} else {
+				$scope.testResults = [];
+				$scope.searchParameters.numPages = 1;
+				$scope.searchParameters.startResult = 0;
+				$scope.searchParameters.endResult = 0;
+				$scope.contentLoaded = true;
+				$scope.$apply();
+				var counterRunning = 0;
+			}
 		});
 	}
 
