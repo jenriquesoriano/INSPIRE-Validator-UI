@@ -645,9 +645,9 @@
                         <option value="13">Population distribution and demography (PD)</option>
                         <option value="14">Production and industrial facilities (PF)</option>
                         <option value="15">Sea regions (SR)</option>
-                        <option value="16" disabled>Soil (SO)</option>
+                        <option value="16">Soil (SO)</option>
                         <option value="17">Species distribution (SD)</option>
-                        <option value="18" disabled>Statistical units (SU)</option>
+                        <option value="18">Statistical units (SU)</option>
                         <option value="19">Utility and governmental services (US)</option>
                       </select>
                     </td>
@@ -840,6 +840,28 @@
                         class="ecl-checkbox__icon ecl-icon ecl-icon--s">
                         <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
                       </svg></span>Buildings3D</label>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <div id="metadata-group" ng-show="select.datasetType.includes('SU')">
+            <div id="metadata-version-group" class="radio-group">
+              <fieldset aria-describedby="metadata-version-1" class="ecl-form-group">
+                <legend class="ecl-form-label">Select the Application Schemas used in 'Statistical units (SU)' data set</legend>
+                <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="statistical-version-1"
+                    name="adminunits-version" value="SUGRID" ng-click="selectSubStatistical()"/><label class="ecl-checkbox__label" for="statistical-version-1"><span
+                      class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                        class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                        <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                      </svg></span>Grid</label>
+                </div>
+                <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="statistical-version-2"
+                    name="adminunits-version" value="SUVECTOR" ng-click="selectSubStatistical()"/><label class="ecl-checkbox__label" for="statistical-version-2"><span
+                      class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                        class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                        <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                      </svg></span>Vector</label>
                 </div>
               </fieldset>
             </div>
@@ -3914,6 +3936,82 @@
                         </svg></span>Conformance Class 'Reference systems, Sea Regions' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-sr/master/sr-rs">source</a>)</label>
                   </div>
                 </fieldset>
+				
+                <!-- Soil (SO) -->
+                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('SO')">
+                  <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed for ANNEX III - Soil (SO)</legend>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-so-options-1"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSOAdvanced('inspire_gml_encoding')"/><label class="ecl-checkbox__label" for="dataset-so-options-1"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML encoding' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-encoding/master/inspire-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-so-options-2"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSOAdvanced('gml_application_schemas')"/><label class="ecl-checkbox__label" for="dataset-so-options-2"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML application schemas' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/schemas">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-so-options-3"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSOAdvanced('gml_application_schemas_soil')"/><label class="ecl-checkbox__label" for="dataset-so-options-3"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'GML application schema, Soil' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-so/master/so-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-so-options-4"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSOAdvanced('application_schema_soil')"/><label class="ecl-checkbox__label" for="dataset-so-options-4"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application schema, Soil' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-so/master/so-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-so-options-5"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSOAdvanced('data_consistency')"/><label class="ecl-checkbox__label" for="dataset-so-options-5"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/data-consistency">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-so-options-6"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSOAdvanced('data_consistency_soil')"/><label class="ecl-checkbox__label" for="dataset-so-options-6"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency, Soil' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-so/master/so-dc">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-so-options-7"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSOAdvanced('information_accessibility')"/><label class="ecl-checkbox__label" for="dataset-so-options-7"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/information-accessibility">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-so-options-8"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSOAdvanced('information_accessibility_soil')"/><label class="ecl-checkbox__label" for="dataset-so-options-8"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility, Soil' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-so/master/so-ia">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-so-options-9"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSOAdvanced('reference_systems')"/><label class="ecl-checkbox__label" for="dataset-so-options-9"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/reference-systems">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-so-options-10"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSOAdvanced('reference_systems_soil')"/><label class="ecl-checkbox__label" for="dataset-so-options-10"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems, Soil' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-so/master/so-rs">source</a>)</label>
+                  </div>
+                </fieldset>
+
 
                 <!-- Species distribution (SD) -->
                 <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('SD')">
@@ -3987,6 +4085,170 @@
                           class="ecl-checkbox__icon ecl-icon ecl-icon--s">
                           <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
                         </svg></span>Conformance Class 'Reference systems, Species Distribution' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-sd/master/sd-rs">source</a>)</label>
+                  </div>
+                </fieldset>
+
+                <!-- Statistical units - Grid (SUGRID) -->
+                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('SU') && select.subStatistical.includes('SUGRID')">
+                  <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed for ANNEX III - Statistical units Grid (SUGRID)</legend>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-1"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('inspire_gml_encoding')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-1"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML encoding' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-encoding/master/inspire-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-2"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('gml_application_schemas')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-2"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML application schemas' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/schemas">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-3"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('gml_application_schemas_statistical')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-3"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'GML application schemas, Statistical Units' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-4"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('application_schema_statistical_base')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-4"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application schema, Statistical Units Base' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-5"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('application_schema_statistical_grid')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-5"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application schema, Statistical Units Grid' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-grid-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-6"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('data_consistency')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-6"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/data-consistency">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-7"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('data_consistency_statistical')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-7"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency, Statistical Units' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-dc">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-8"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('information_accessibility')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-8"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/information-accessibility">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-9"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('information_accessibility_statistical')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-9"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility, Statistical Units' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-ia">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-10"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('reference_systems')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-10"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/reference-systems">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-sugrid-options-11"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUGRIDAdvanced('reference_systems_statistical')"/><label class="ecl-checkbox__label" for="dataset-sugrid-options-11"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems, Statistical Units' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-rs">source</a>)</label>
+                  </div>
+                </fieldset>
+
+                <!-- Statistical units - Vector (SUVECTOR) -->
+                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('SU') && select.subStatistical.includes('SUVECTOR')">
+                  <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed for ANNEX III - Statistical units Vector (SUVECTOR)</legend>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-1"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('inspire_gml_encoding')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-1"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML encoding' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-encoding/master/inspire-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-2"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('gml_application_schemas')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-2"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML application schemas' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/schemas">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-3"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('gml_application_schemas_statistical')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-3"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'GML application schemas, Statistical Units' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-4"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('application_schema_statistical_base')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-4"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application schema, Statistical Units Base' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-5"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('application_schema_statistical_vector')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-5"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application schema, Statistical Units Vector' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-vector-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-6"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('data_consistency')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-6"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/data-consistency">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-7"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('data_consistency_statistical')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-7"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency, Statistical Units' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-dc">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-8"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('information_accessibility')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-8"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/information-accessibility">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-9"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('information_accessibility_statistical')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-9"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility, Statistical Units' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-ia">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-10"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('reference_systems')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-10"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/reference-systems">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-suvector-options-11"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexSUVECTORAdvanced('reference_systems_statistical')"/><label class="ecl-checkbox__label" for="dataset-suvector-options-11"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems, Statistical Units' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-su/master/su-rs">source</a>)</label>
                   </div>
                 </fieldset>
 
@@ -4683,7 +4945,7 @@
     <footer class="ecl-footer-standardised">
   <div class="ecl-container ecl-footer-standardised__container">
     <section class="ecl-footer-standardised__section ecl-footer-standardised__section1"><a href=""
-        class="ecl-footer-standardised__title ecl-link ecl-link--standalone">INSPIRE Reference Validator</a> (v0.41b 2021-05-26 10:30)
+        class="ecl-footer-standardised__title ecl-link ecl-link--standalone">INSPIRE Reference Validator</a> (v0.42b 2021-06-11 14:33)
       <div class="ecl-footer-standardised__description">The INSPIRE Validator is managed by the European Commission Joint Research Centre B6 Unit</div>
     </section>
     <div class="ecl-footer-standardised__section2">
