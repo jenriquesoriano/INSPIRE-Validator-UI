@@ -2,12 +2,36 @@ ngApp.controller('myValidatorController', function($scope) {
 
 	$scope.urlValidator = serverURL;
 	$scope.urlCaptcha = serverCaptchaURL;
+	$scope.captchaEnabled = captchaEnabled;
+	$scope.betaBanner = betaBanner;
+	$scope.labelStaging = labelStaging;
+
 	$.ajaxSetup({
 		cache: false
 	});
-	$("#metadata-upload-file").hide();
-	$("#buttonStart").prop("disabled", true);
-	$("#captchaContainer").show();
+	
+	// Show/Hide captcha
+	if ($scope.captchaEnabled == true) {
+		$("#metadata-upload-file").hide();
+		$("#buttonStart").prop("disabled", true);
+		$("#captchaContainer").show();
+	} else {
+		$("#metadata-upload-file").show();
+		$("#buttonStart").prop("disabled", true);
+		$("#captchaContainer").hide();
+	}
+	
+	// Show/Hide Beta banner
+	if ($scope.betaBanner == true) {
+		$("#betaBanner").show();
+	} else {
+		$("#betaBanner").hide();
+	}
+	
+	//Show STAGING label
+	if ($scope.labelStaging == true) {
+		$(document).prop('title', "[STAGING] " + $(document).prop('title'));
+	}
 
 	$scope.roundNumber = function(i) {
 		return Math.round(i + 0.4);
@@ -942,7 +966,7 @@ ngApp.controller('myValidatorController', function($scope) {
 				}
 			}
 			if (selectedAnnex3 > 0) {
-				if ($scope.selectedOptionsAnnex3.includes("1")) {
+				if ($scope.selectedOptionsAnnex3.includes("0")) {
 					$scope.select.datasetType.push("AF");
 					$scope.selectDatasetType('AF');
 				}

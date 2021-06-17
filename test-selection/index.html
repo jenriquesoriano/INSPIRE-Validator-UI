@@ -114,7 +114,7 @@
                 data-ecl-breadcrumb-core-item="static" aria-hidden="false">Test selection</li>
             </ol>
           </nav>
-          <h1 class="ecl-page-header-core__title">INSPIRE Validator - Test selection</h1>
+          <h1 class="ecl-page-header-core__title">INSPIRE Reference Validator - Test selection</h1>
           <!-- <p class="ecl-page-header-core__description">Test your INSPIRE data, services and metadata</p> -->
           <nav class="ecl-menu" aria-expanded="false" data-ecl-menu="true">
             <div class="ecl-menu__overlay" data-ecl-menu-overlay="true"></div>
@@ -630,7 +630,8 @@
                     <td>
                       <div class="ecl-help-block">Annex III</div>
                       <select id='select-annex-3' multiple size="1" ng-model="selectedOptionsAnnex3" ng-change="checkAnnexSelected()">
-                        <option value="1">Agricultural and aquaculture facilities (AF)</option>
+                        <option value="0">Agricultural and aquaculture facilities (AF)</option>
+                        <option value="1" disabled>Atmospheric conditions and Meteorological geographical features (AC-MF)</option>
                         <option value="2">Area management / restriction / regulation zones & reporting units (AM)</option>
                         <option value="3">Bio-geographical regions (BR)</option>
                         <option value="4">Buildings (BU)</option>
@@ -4945,7 +4946,7 @@
     <footer class="ecl-footer-standardised">
   <div class="ecl-container ecl-footer-standardised__container">
     <section class="ecl-footer-standardised__section ecl-footer-standardised__section1"><a href=""
-        class="ecl-footer-standardised__title ecl-link ecl-link--standalone">INSPIRE Reference Validator</a> (v0.42b 2021-06-11 14:33)
+        class="ecl-footer-standardised__title ecl-link ecl-link--standalone">INSPIRE Reference Validator</a> (v0.43b 2021-06-17 17:22)
       <div class="ecl-footer-standardised__description">The INSPIRE Validator is managed by the European Commission Joint Research Centre B6 Unit</div>
     </section>
     <div class="ecl-footer-standardised__section2">
@@ -5037,7 +5038,7 @@
 <div class="balloonMessageGreen" id="hidingMessage2"><span id="baloonText2" class="ecl-form-label"></span><br><span id="baloonSubText2" class="ecl-u-type-m"></span> <div class="crossToClose"><span class="ecl-form-label" onclick="closeBalloon(2)">x</span></div><div class="progressBar2" id="progressBar2"><div></div></div></div>
 <div class="balloonMessageRed" id="hidingMessage3"><span id="baloonText3" class="ecl-form-label"></span><br><span id="baloonSubText3" class="ecl-u-type-m"></span> <div class="crossToClose"><span class="ecl-form-label" onclick="closeBalloon(3)">x</span></div><div class="progressBar3" id="progressBar3"><div></div></div></div>
 
-<div class="topcorner" style="position:fixed;top:0;right:0;"><img style="width:120px" src="../img/beta.png"/></div>
+<div id="betaBanner" class="topcorner" style="display: none;position:fixed;top:0;right:0;"><img style="width:120px" src="../img/beta.png"/></div>
 
     <script
       src="https://cdn1.fpfis.tech.ec.europa.eu/ecl/v2.27.0/ec-preset-website/scripts/ecl-ec-preset-website.js"

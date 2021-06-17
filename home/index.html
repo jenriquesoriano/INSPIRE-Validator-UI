@@ -13,16 +13,15 @@
       cl.add('has-js');
     </script>
     <!-- <script src="https://ec.europa.eu/wel/cookie-consent/consent.js"></script> -->
-    <script src="../lib/angularjs/angular.min.js"></script>
     <link rel="stylesheet" href="../lib/jquery-ui/jquery-ui.min.css">
     <script src="../lib/jquery/jquery-3.6.0.min.js"></script>
     <script src="../lib/jquery-ui/jquery-ui.min.js"></script>
     <script src="../js/config.js"></script>
-    <script src="../js/selection/externalFunctions.js"></script>
-    <script src="../js/selection/app.js"></script>
-    <script src="../js/selection/controller.js"></script>
+    <script src="../js/home/controller.js"></script>
 
-	        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
         <meta name="description" content="The INSPIRE Geoportal is the central European access point to the data provided by EU Member States and several EFTA countries under the INSPIRE Directive.">
         <meta name="author" content="European Commission - Joint  Centre">
@@ -66,7 +65,7 @@
     />
     <link type="text/css" rel="stylesheet" href="../css/validator.css" />
   </head>
-  <body ng-app="myNgValidator">
+  <body>
 
     <!-- paste the markup from the template here -->
     <header data-ecl-auto-init="SiteHeaderStandardised" class="ecl-site-header-standardised">
@@ -138,7 +137,7 @@
                 data-ecl-breadcrumb-core-item="static" aria-hidden="false">Home</li>
             </ol>
           </nav>
-          <h1 class="ecl-page-header-core__title">INSPIRE Reference Validator</h1>
+          <h1 class="ecl-page-header-core__title">INSPIRE Reference Validator<span id="titleWebPageHeader" style="display: none;"> - Staging instance</span></h1>
           <!-- <p class="ecl-page-header-core__description">Test your INSPIRE data, services and metadata</p> -->
           <nav class="ecl-menu" aria-expanded="false" data-ecl-menu="true">
             <div class="ecl-menu__overlay" data-ecl-menu-overlay="true"></div>
@@ -232,7 +231,7 @@
             <div class="row">
                 <div class="col-md-12 smaller">
                     <div class="page-header mt-5 mb-5">
-                        <h1 class="page-heading">Welcome to the INSPIRE Reference Validator</h1>
+                        <h1 class="page-heading">Welcome to the INSPIRE Reference Validator<span id="titleWebPage" style="display: none;"> - Staging instance</span></h1>
                         <hr>
                     </div>
                 </div>
@@ -364,7 +363,7 @@
     <footer class="ecl-footer-standardised">
   <div class="ecl-container ecl-footer-standardised__container">
     <section class="ecl-footer-standardised__section ecl-footer-standardised__section1"><a href=""
-        class="ecl-footer-standardised__title ecl-link ecl-link--standalone">INSPIRE Reference Validator</a> (v0.42b 2021-06-11 14:33)
+        class="ecl-footer-standardised__title ecl-link ecl-link--standalone">INSPIRE Reference Validator</a> (v0.43b 2021-06-17 17:22)
       <div class="ecl-footer-standardised__description">The INSPIRE Validator is managed by the European Commission Joint Research Centre B6 Unit</div>
     </section>
     <div class="ecl-footer-standardised__section2">
@@ -455,7 +454,7 @@
 <div class="balloonMessageBlue" id="hidingMessage1"><span id="baloonText1" class="ecl-form-label"></span><div class="crossToClose"><span class="ecl-form-label" onclick="closeBalloon(1)">x</span></div><div class="progressBar1" id="progressBar1"><div></div></div></div>
 <div class="balloonMessageGreen" id="hidingMessage2"><span id="baloonText2" class="ecl-form-label"></span><br><span id="baloonSubText2" class="ecl-u-type-m"></span> <div class="crossToClose"><span class="ecl-form-label" onclick="closeBalloon(2)">x</span></div><div class="progressBar2" id="progressBar2"><div></div></div></div>
 
-<div class="topcorner" style="position:fixed;top:0;right:0;"><img style="width:120px" src="../img/beta.png"/></div>
+<div id="betaBanner" class="topcorner" style="display: none;position:fixed;top:0;right:0;"><img style="width:120px" src="../img/beta.png"/></div>
 
     <script
       src="https://cdn1.fpfis.tech.ec.europa.eu/ecl/v2.27.0/ec-preset-website/scripts/ecl-ec-preset-website.js"
@@ -464,6 +463,11 @@
     ></script>
     <script>
       ECL.autoInit();
+	  
+	  if (labelStaging == true) {
+		$("#titleWebPage").show();
+		$("#titleWebPageHeader").show();
+	  }
     </script>
 
   </body>
