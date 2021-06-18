@@ -1,6 +1,20 @@
 ngApp.controller('myValidatorController', function($scope) {
 	$scope.urlValidator = serverURL;
 	$scope.urlCaptcha = serverCaptchaURL;
+	$scope.betaBanner = betaBanner;
+	$scope.labelStaging = labelStaging;
+
+	// Show/Hide Beta banner
+	if ($scope.betaBanner == true) {
+		$("#betaBanner").show();
+	} else {
+		$("#betaBanner").hide();
+	}
+
+	//Show STAGING label
+	if ($scope.labelStaging == true) {
+		$(document).prop('title', "[STAGING] " + $(document).prop('title'));
+	}
 
 	$.ajaxSetup({
 		cache: false

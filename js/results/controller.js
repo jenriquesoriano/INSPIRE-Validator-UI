@@ -1,6 +1,22 @@
 ngApp.controller('myValidatorController', function($scope) {
 	$scope.urlValidator = serverURL;
 	$scope.urlRealValidator = serverRealURL;
+	$scope.betaBanner = betaBanner;
+	$scope.labelStaging = labelStaging;
+
+	// Show/Hide Beta banner
+	if ($scope.betaBanner == true) {
+		$("#betaBanner").show();
+		console.log("Banner mostrato");
+	} else {
+		$("#betaBanner").hide();
+		console.log("Banner nascosto");
+	}
+
+	//Show STAGING label
+	if ($scope.labelStaging == true) {
+		$(document).prop('title', "[STAGING] " + $(document).prop('title'));
+	}
 
 	$.ajaxSetup({
 		cache: false
@@ -907,7 +923,13 @@ ngApp.controller('myValidatorController', function($scope) {
 
 	$scope.sortTestResults = function(field, order) {
 		if (field != "default") {
-			$scope.testResults.sort($scope.dynamicSort(field, order));
+			if (Array.isArray($scope.testResults)) {
+				$scope.testResults.sort($scope.dynamicSort(field, order));
+			} else {
+				var uniqueValue = $scope.testResults;
+				$scope.testResults = [];
+				$scope.testResults.push(uniqueValue);
+			}
 		}
 		if (order == "ASC") {
 			$("#sort_ascending").css("background-color", "#004494");

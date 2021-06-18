@@ -2,12 +2,36 @@ ngApp.controller('myValidatorController', function($scope) {
 
 	$scope.urlValidator = serverURL;
 	$scope.urlCaptcha = serverCaptchaURL;
+	$scope.captchaEnabled = captchaEnabled;
+	$scope.betaBanner = betaBanner;
+	$scope.labelStaging = labelStaging;
+
 	$.ajaxSetup({
 		cache: false
 	});
-	$("#metadata-upload-file").hide();
-	$("#buttonStart").prop("disabled", true);
-	$("#captchaContainer").show();
+	
+	// Show/Hide captcha
+	if ($scope.captchaEnabled == true) {
+		$("#metadata-upload-file").hide();
+		$("#buttonStart").prop("disabled", true);
+		$("#captchaContainer").show();
+	} else {
+		$("#metadata-upload-file").show();
+		$("#buttonStart").prop("disabled", true);
+		$("#captchaContainer").hide();
+	}
+	
+	// Show/Hide Beta banner
+	if ($scope.betaBanner == true) {
+		$("#betaBanner").show();
+	} else {
+		$("#betaBanner").hide();
+	}
+	
+	//Show STAGING label
+	if ($scope.labelStaging == true) {
+		$(document).prop('title', "[STAGING] " + $(document).prop('title'));
+	}
 
 	$scope.roundNumber = function(i) {
 		return Math.round(i + 0.4);
@@ -487,12 +511,45 @@ ngApp.controller('myValidatorController', function($scope) {
 				if ($("#dataset-sr-options-4").prop("checked") == true) arrayTestsuiteid.push("EID793a9c8e-c24a-4b90-ad1e-9a5f12339d7a");
 				if (($("#dataset-sr-options-10").prop("checked") == false) && ($("#dataset-sr-options-8").prop("checked") == false) && ($("#dataset-sr-options-6").prop("checked") == false) && ($("#dataset-sr-options-4").prop("checked") == false)) arrayTestsuiteid.push("EIDbfc36eb3-18f0-4284-9dae-6159f59866bc");
 			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("SO"))) {
+				if ($("#dataset-so-options-10").prop("checked") == true) arrayTestsuiteid.push("EID6f90ab57-9b10-4f67-859a-fd62d75f32c2");
+				if ($("#dataset-so-options-8").prop("checked") == true) arrayTestsuiteid.push("EID28051c99-ff98-480c-b8c1-b502333cc3cd");
+				if ($("#dataset-so-options-6").prop("checked") == true) arrayTestsuiteid.push("EID480f945a-d0c8-4582-a1fe-775cea3d1f48");
+				if ($("#dataset-so-options-4").prop("checked") == true) arrayTestsuiteid.push("EID09b2bdfc-54fd-4884-b9bd-59f18dff358b");
+				if (($("#dataset-so-options-10").prop("checked") == false) && ($("#dataset-so-options-8").prop("checked") == false) && ($("#dataset-so-options-6").prop("checked") == false) && ($("#dataset-so-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID31880338-6fe3-486c-8f3e-7086a20490c4");
+			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("SD"))) {
 				if ($("#dataset-sd-options-10").prop("checked") == true) arrayTestsuiteid.push("EIDeed6bc26-210e-4280-9346-9b5ac9850e41");
 				if ($("#dataset-sd-options-8").prop("checked") == true) arrayTestsuiteid.push("EIDc7ec6434-6d55-4ec4-bf48-5c5dd5760a53");
 				if ($("#dataset-sd-options-6").prop("checked") == true) arrayTestsuiteid.push("EID069ca302-e21c-4727-93db-0b79ebef88fb");
 				if ($("#dataset-sd-options-4").prop("checked") == true) arrayTestsuiteid.push("EID4a6ad3fe-8ae8-467e-a6e4-aef6bdff8a66");
 				if (($("#dataset-sd-options-10").prop("checked") == false) && ($("#dataset-sd-options-8").prop("checked") == false) && ($("#dataset-sd-options-6").prop("checked") == false) && ($("#dataset-sd-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID42d4a7f6-361d-49c5-b88e-0a456908707e");
+			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("SU")) && $scope.select.subStatistical.includes("SUGRID")) {
+				if ($("#dataset-sugrid-options-11").prop("checked") == true) arrayTestsuiteid.push("EIDe5ce9075-371e-4c8d-97e1-017e3b72e14a");
+				if ($("#dataset-sugrid-options-9").prop("checked") == true) arrayTestsuiteid.push("EIDc513fcc8-8e0a-4ed6-b29f-bfba96cc0fb8");
+				if ($("#dataset-sugrid-options-7").prop("checked") == true) arrayTestsuiteid.push("EID94a1fde1-c547-4d77-9cd4-5e454f54416d");
+				if ($("#dataset-sugrid-options-5").prop("checked") == true) arrayTestsuiteid.push("EID529582ee-f03f-4386-acd3-b880c26bcb31");
+
+				if (($("#dataset-sugrid-options-11").prop("checked") == false) && ($("#dataset-sugrid-options-9").prop("checked") == false) && ($("#dataset-sugrid-options-7").prop("checked") == false) && ($("#dataset-sugrid-options-5").prop("checked") == false)) {
+					if ($("#dataset-sugrid-options-4").prop("checked") == true) arrayTestsuiteid.push("EID4a8fffca-2603-4a16-b8e4-6e2c659e50be");
+					if ($("#dataset-sugrid-options-4").prop("checked") == false) {
+						if ($("#dataset-sugrid-options-3").prop("checked") == true) arrayTestsuiteid.push("EID7d36c5e8-5bbe-4af6-9c37-3038f6282ae1");
+					}
+				}
+			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("SU")) && $scope.select.subStatistical.includes("SUVECTOR")) {
+				if ($("#dataset-suvector-options-11").prop("checked") == true) arrayTestsuiteid.push("EIDe5ce9075-371e-4c8d-97e1-017e3b72e14a");
+				if ($("#dataset-suvector-options-9").prop("checked") == true) arrayTestsuiteid.push("EIDc513fcc8-8e0a-4ed6-b29f-bfba96cc0fb8");
+				if ($("#dataset-suvector-options-7").prop("checked") == true) arrayTestsuiteid.push("EID94a1fde1-c547-4d77-9cd4-5e454f54416d");
+				if ($("#dataset-suvector-options-5").prop("checked") == true) arrayTestsuiteid.push("EID33a36524-2997-4ac5-9eb4-0d7ea7008122");
+
+				if (($("#dataset-suvector-options-11").prop("checked") == false) && ($("#dataset-suvector-options-9").prop("checked") == false) && ($("#dataset-suvector-options-7").prop("checked") == false) && ($("#dataset-suvector-options-5").prop("checked") == false)) {
+					if ($("#dataset-suvector-options-4").prop("checked") == true) arrayTestsuiteid.push("EID4a8fffca-2603-4a16-b8e4-6e2c659e50be");
+					if ($("#dataset-suvector-options-4").prop("checked") == false) {
+						if ($("#dataset-suvector-options-3").prop("checked") == true) arrayTestsuiteid.push("EID7d36c5e8-5bbe-4af6-9c37-3038f6282ae1");
+					}
+				}
 			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("US")) && $scope.select.subUtility.includes("USASGS")) {
 				if ($("#dataset-usasgs-options-11").prop("checked") == true) arrayTestsuiteid.push("EIDa52ff667-7079-40c8-941a-5f3f918825af");
@@ -660,7 +717,9 @@ ngApp.controller('myValidatorController', function($scope) {
 		if (($scope.select.datasetType.includes('PD')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Population distribution and demography (PD)";
 		if (($scope.select.datasetType.includes('PF')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Production and industrial facilities (PF)";
 		if (($scope.select.datasetType.includes('SR')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Sea regions (SR)";
+		if (($scope.select.datasetType.includes('SO')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Soil (SO)";
 		if (($scope.select.datasetType.includes('SD')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Species distribution (SD)";
+		if (($scope.select.datasetType.includes('SU')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Statistical units (SU)";
 		if (($scope.select.datasetType.includes('US')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Utility and governmental services (US)";
 		var d = new Date();
 		var currHours = ("0" + d.getHours()).slice(-2);
@@ -907,7 +966,7 @@ ngApp.controller('myValidatorController', function($scope) {
 				}
 			}
 			if (selectedAnnex3 > 0) {
-				if ($scope.selectedOptionsAnnex3.includes("1")) {
+				if ($scope.selectedOptionsAnnex3.includes("0")) {
 					$scope.select.datasetType.push("AF");
 					$scope.selectDatasetType('AF');
 				}
@@ -959,9 +1018,19 @@ ngApp.controller('myValidatorController', function($scope) {
 					$scope.select.datasetType.push("SR");
 					$scope.selectDatasetType('SR');
 				}
+				if ($scope.selectedOptionsAnnex3.includes("16")) {
+					$scope.select.datasetType.push("SO");
+					$scope.selectDatasetType('SO');
+				}
 				if ($scope.selectedOptionsAnnex3.includes("17")) {
 					$scope.select.datasetType.push("SD");
 					$scope.selectDatasetType('SD');
+				}
+				if ($scope.selectedOptionsAnnex3.includes("18")) {
+					$scope.select.datasetType.push("SU");
+					$("#statistical-version-1").prop("checked", true);
+					$scope.selectSubStatistical();
+					$scope.selectDatasetType('SUGRID');
 				}
 				if ($scope.selectedOptionsAnnex3.includes("19")) {
 					$scope.select.datasetType.push("US");
@@ -1116,6 +1185,20 @@ ngApp.controller('myValidatorController', function($scope) {
 			$scope.selectDatasetType("SELU");
 		}
 		console.log($scope.select.subLandUse);
+	}
+
+	$scope.selectSubStatistical = function() {
+		$scope.select.subStatistical = [];
+		if (!$("#statistical-version-1").prop("checked") && !$("#statistical-version-2").prop("checked")) $("#statistical-version-1").prop("checked", true);
+		if ($("#statistical-version-1").prop("checked")) {
+			$scope.select.subStatistical.push("SUGRID");
+			$scope.selectDatasetType("SUGRID");
+		}
+		if ($("#statistical-version-2").prop("checked")) {
+			$scope.select.subStatistical.push("SUVECTOR");
+			$scope.selectDatasetType("SUVECTOR");
+		}
+		console.log($scope.select.subStatistical);
 	}
 
 	$scope.selectSubUtility = function() {
@@ -1967,6 +2050,19 @@ ngApp.controller('myValidatorController', function($scope) {
 			$("#dataset-sr-options-3").prop("checked", true);
 			$scope.selectDatasetAnnexSRAdvanced('gml_application_schemas_searegions');
 		}
+		if (datasetType == 'SO') {
+			$scope.select.atLeastOneSO = 0;
+			$("#dataset-so-options-10").prop("checked", true);
+			$scope.selectDatasetAnnexSOAdvanced('reference_systems_soil');
+			$("#dataset-so-options-8").prop("checked", true);
+			$scope.selectDatasetAnnexSOAdvanced('information_accessibility_soil');
+			$("#dataset-so-options-6").prop("checked", true);
+			$scope.selectDatasetAnnexSOAdvanced('data_consistency_soil');
+			$("#dataset-so-options-4").prop("checked", true);
+			$scope.selectDatasetAnnexSOAdvanced('application_schema_soil');
+			$("#dataset-so-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexSOAdvanced('gml_application_schemas_soil');
+		}
 		if (datasetType == 'SD') {
 			$scope.select.atLeastOneSD = 0;
 			$("#dataset-sd-options-10").prop("checked", true);
@@ -1979,6 +2075,32 @@ ngApp.controller('myValidatorController', function($scope) {
 			$scope.selectDatasetAnnexSDAdvanced('application_schema_species');
 			$("#dataset-sd-options-3").prop("checked", true);
 			$scope.selectDatasetAnnexSDAdvanced('gml_application_schemas_species');
+		}
+		if (datasetType == 'SUGRID') {
+			$scope.select.atLeastOneSUGRID = 0;
+			$("#dataset-sugrid-options-11").prop("checked", true);
+			$scope.selectDatasetAnnexSUGRIDAdvanced('reference_systems_statistical');
+			$("#dataset-sugrid-options-9").prop("checked", true);
+			$scope.selectDatasetAnnexSUGRIDAdvanced('information_accessibility_statistical');
+			$("#dataset-sugrid-options-7").prop("checked", true);
+			$scope.selectDatasetAnnexSUGRIDAdvanced('data_consistency_statistical');
+			$("#dataset-sugrid-options-5").prop("checked", true);
+			$scope.selectDatasetAnnexSUGRIDAdvanced('application_schema_statistical_grid');
+			$("#dataset-sugrid-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexSUGRIDAdvanced('gml_application_schemas_statistical');
+		}
+		if (datasetType == 'SUVECTOR') {
+			$scope.select.atLeastOneSUVECTOR = 0;
+			$("#dataset-suvector-options-11").prop("checked", true);
+			$scope.selectDatasetAnnexSUVECTORAdvanced('reference_systems_statistical');
+			$("#dataset-suvector-options-9").prop("checked", true);
+			$scope.selectDatasetAnnexSUVECTORAdvanced('information_accessibility_statistical');
+			$("#dataset-suvector-options-7").prop("checked", true);
+			$scope.selectDatasetAnnexSUVECTORAdvanced('data_consistency_statistical');
+			$("#dataset-suvector-options-5").prop("checked", true);
+			$scope.selectDatasetAnnexSUVECTORAdvanced('application_schema_statistical_vector');
+			$("#dataset-suvector-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexSUVECTORAdvanced('gml_application_schemas_statistical');
 		}
 		if (datasetType == 'USASGS') {
 			$scope.select.atLeastOneUSASGS = 0;
@@ -5002,6 +5124,77 @@ ngApp.controller('myValidatorController', function($scope) {
 		$scope.prefillLabel();
 	}
 
+	$scope.selectDatasetAnnexSOAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-so-options-1").prop("checked");
+			$("#dataset-so-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-so-options-2").prop("checked");
+			$("#dataset-so-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_soil') {
+			if ($("#dataset-so-options-4").prop("checked") == true) {
+				$("#dataset-so-options-3").prop("checked", true);
+			} else {
+				$("#dataset-so-options-3").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_soil') {
+			if ($("#dataset-so-options-4").prop("checked") == true) {
+				$scope.select.atLeastOneSO++;
+				$("#dataset-so-options-3").prop("checked", true);
+				$("#dataset-so-options-2").prop("checked", true);
+				$("#dataset-so-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSO--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-so-options-5").prop("checked");
+			$("#dataset-so-options-5").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_soil') {
+			if ($("#dataset-so-options-6").prop("checked") == true) {
+				$scope.select.atLeastOneSO++;
+				$("#dataset-so-options-5").prop("checked", true);
+				$("#dataset-so-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSO--;
+				$("#dataset-so-options-5").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-so-options-7").prop("checked");
+			$("#dataset-so-options-7").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_soil') {
+			if ($("#dataset-so-options-8").prop("checked") == true) {
+				$scope.select.atLeastOneSO++;
+				$("#dataset-so-options-7").prop("checked", true);
+				$("#dataset-so-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSO--;
+				$("#dataset-so-options-7").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-so-options-9").prop("checked");
+			$("#dataset-so-options-9").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_soil') {
+			if ($("#dataset-so-options-10").prop("checked") == true) {
+				$scope.select.atLeastOneSO++;
+				$("#dataset-so-options-9").prop("checked", true);
+				$("#dataset-so-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSO--;
+				$("#dataset-so-options-9").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
 	$scope.selectDatasetAnnexSDAdvanced = function(type) {
 		if (type == 'inspire_gml_encoding') {
 			var currState = $("#dataset-sd-options-1").prop("checked");
@@ -5068,6 +5261,180 @@ ngApp.controller('myValidatorController', function($scope) {
 			} else {
 				$scope.select.atLeastOneSD--;
 				$("#dataset-sd-options-9").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
+	$scope.selectDatasetAnnexSUGRIDAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-sugrid-options-1").prop("checked");
+			$("#dataset-sugrid-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-sugrid-options-2").prop("checked");
+			$("#dataset-sugrid-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_statistical') {
+			var currState = $("#dataset-sugrid-options-3").prop("checked");
+			$("#dataset-sugrid-options-3").prop("checked", true);
+			$("#dataset-sugrid-options-2").prop("checked", true);
+			$("#dataset-sugrid-options-1").prop("checked", true);
+		}
+		if (type == 'application_schema_statistical') {
+			console.log($("#dataset-sugrid-options-4").prop("checked"));
+			if ($("#dataset-sugrid-options-5").prop("checked") == false) {
+				if ($("#dataset-sugrid-options-4").prop("checked") == true) {
+					$scope.select.atLeastOneSUGRID++;
+					$("#dataset-sugrid-options-3").prop("checked", true);
+					$("#dataset-sugrid-options-2").prop("checked", true);
+					$("#dataset-sugrid-options-1").prop("checked", true);
+				} else {
+					$scope.select.atLeastOneSUGRID--;
+					$("#dataset-sugrid-options-3").prop("checked", true);
+				}
+			} else {
+				$("#dataset-sugrid-options-4").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_statistical_grid') {
+			if ($("#dataset-sugrid-options-5").prop("checked") == true) {
+				$scope.select.atLeastOneSUGRID++;
+				$("#dataset-sugrid-options-4").prop("checked", true);
+				$("#dataset-sugrid-options-3").prop("checked", true);
+				$("#dataset-sugrid-options-2").prop("checked", true);
+				$("#dataset-sugrid-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSUGRID--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-sugrid-options-6").prop("checked");
+			$("#dataset-sugrid-options-6").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_statistical') {
+			if ($("#dataset-sugrid-options-7").prop("checked") == true) {
+				$scope.select.atLeastOneSUGRID++;
+				$("#dataset-sugrid-options-6").prop("checked", true);
+				$("#dataset-sugrid-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSUGRID--;
+				$("#dataset-sugrid-options-6").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-sugrid-options-8").prop("checked");
+			$("#dataset-sugrid-options-8").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_statistical') {
+			if ($("#dataset-sugrid-options-9").prop("checked") == true) {
+				$scope.select.atLeastOneSUGRID++;
+				$("#dataset-sugrid-options-8").prop("checked", true);
+				$("#dataset-sugrid-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSUGRID--;
+				$("#dataset-sugrid-options-8").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-sugrid-options-10").prop("checked");
+			$("#dataset-sugrid-options-10").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_statistical') {
+			if ($("#dataset-sugrid-options-11").prop("checked") == true) {
+				$scope.select.atLeastOneSUGRID++;
+				$("#dataset-sugrid-options-10").prop("checked", true);
+				$("#dataset-sugrid-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSUGRID--;
+				$("#dataset-sugrid-options-10").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
+	$scope.selectDatasetAnnexSUVECTORAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-suvector-options-1").prop("checked");
+			$("#dataset-suvector-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-suvector-options-2").prop("checked");
+			$("#dataset-suvector-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_statistical') {
+			var currState = $("#dataset-suvector-options-3").prop("checked");
+			$("#dataset-suvector-options-3").prop("checked", true);
+			$("#dataset-suvector-options-2").prop("checked", true);
+			$("#dataset-suvector-options-1").prop("checked", true);
+		}
+		if (type == 'application_schema_statistical') {
+			console.log($("#dataset-suvector-options-4").prop("checked"));
+			if ($("#dataset-suvector-options-5").prop("checked") == false) {
+				if ($("#dataset-suvector-options-4").prop("checked") == true) {
+					$scope.select.atLeastOneSUVECTOR++;
+					$("#dataset-suvector-options-3").prop("checked", true);
+					$("#dataset-suvector-options-2").prop("checked", true);
+					$("#dataset-suvector-options-1").prop("checked", true);
+				} else {
+					$scope.select.atLeastOneSUVECTOR--;
+					$("#dataset-suvector-options-3").prop("checked", true);
+				}
+			} else {
+				$("#dataset-suvector-options-4").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_statistical_vector') {
+			if ($("#dataset-suvector-options-5").prop("checked") == true) {
+				$scope.select.atLeastOneSUVECTOR++;
+				$("#dataset-suvector-options-4").prop("checked", true);
+				$("#dataset-suvector-options-3").prop("checked", true);
+				$("#dataset-suvector-options-2").prop("checked", true);
+				$("#dataset-suvector-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSUVECTOR--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-suvector-options-6").prop("checked");
+			$("#dataset-suvector-options-6").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_statistical') {
+			if ($("#dataset-suvector-options-7").prop("checked") == true) {
+				$scope.select.atLeastOneSUVECTOR++;
+				$("#dataset-suvector-options-6").prop("checked", true);
+				$("#dataset-suvector-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSUVECTOR--;
+				$("#dataset-suvector-options-6").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-suvector-options-8").prop("checked");
+			$("#dataset-suvector-options-8").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_statistical') {
+			if ($("#dataset-suvector-options-9").prop("checked") == true) {
+				$scope.select.atLeastOneSUVECTOR++;
+				$("#dataset-suvector-options-8").prop("checked", true);
+				$("#dataset-suvector-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSUVECTOR--;
+				$("#dataset-suvector-options-8").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-suvector-options-10").prop("checked");
+			$("#dataset-suvector-options-10").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_statistical') {
+			if ($("#dataset-suvector-options-11").prop("checked") == true) {
+				$scope.select.atLeastOneSUVECTOR++;
+				$("#dataset-suvector-options-10").prop("checked", true);
+				$("#dataset-suvector-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneSUVECTOR--;
+				$("#dataset-suvector-options-10").prop("checked", false);
 			}
 		}
 		$scope.prefillLabel();
