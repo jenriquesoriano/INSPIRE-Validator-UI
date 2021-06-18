@@ -1,3 +1,6 @@
+var captchaEnabled = true;
+var betaBanner = false;
+var labelStaging = true;
 // PROD
 //var serverURL = "https://inspire-sandbox.jrc.ec.europa.eu/validator-testbed/rest/";
 //var serverRealURL = "https://inspire.ec.europa.eu/validator/v2/";
