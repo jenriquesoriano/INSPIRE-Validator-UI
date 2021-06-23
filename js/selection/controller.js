@@ -249,6 +249,19 @@ ngApp.controller('myValidatorController', function($scope) {
 					}
 				}
 			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("TN")) && $scope.select.subTransport.includes("CTN")) {
+				if ($("#dataset-ctn-options-11").prop("checked") == true) arrayTestsuiteid.push("EID9d35024d-9dd7-43a9-afff-d5aea5f51595");
+				if ($("#dataset-ctn-options-9").prop("checked") == true) arrayTestsuiteid.push("EIDdf5db9a4-b15f-4193-a6ff-6e9951af46f5");
+				if ($("#dataset-ctn-options-7").prop("checked") == true) arrayTestsuiteid.push("EID733af9a0-312b-4f71-9aa2-977cd2134d23");
+				if ($("#dataset-ctn-options-5").prop("checked") == true) arrayTestsuiteid.push("EID731621b9-2daa-49fd-99ef-9279b7f335b5");
+
+				if (($("#dataset-ctn-options-11").prop("checked") == false) && ($("#dataset-ctn-options-9").prop("checked") == false) && ($("#dataset-ctn-options-7").prop("checked") == false) && ($("#dataset-ctn-options-5").prop("checked") == false)) {
+					if ($("#dataset-ctn-options-4").prop("checked") == true) arrayTestsuiteid.push("EID4441cbde-371f-4899-90b3-145f4fd08ebc");
+					if ($("#dataset-ctn-options-4").prop("checked") == false) {
+						if ($("#dataset-ctn-options-3").prop("checked") == true) arrayTestsuiteid.push("EID9af1c865-1cf0-43ff-9250-069df01b0948");
+					}
+				}
+			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("TN")) && $scope.select.subTransport.includes("RATN")) {
 				if ($("#dataset-ctn-options-11").prop("checked") == true) arrayTestsuiteid.push("EID9d35024d-9dd7-43a9-afff-d5aea5f51595");
 				if ($("#dataset-ctn-options-9").prop("checked") == true) arrayTestsuiteid.push("EIDdf5db9a4-b15f-4193-a6ff-6e9951af46f5");
