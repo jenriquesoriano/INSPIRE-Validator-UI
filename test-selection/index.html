@@ -255,7 +255,7 @@
             <fieldset aria-describedby="metadata-records-1" class="ecl-form-group">
               <legend class="ecl-form-label">Select the type of metadata record(s) to be tested</legend>
                 <div class="ecl-radio"><input type="radio" id="metadata-records-1" name="metadata-records" class="ecl-radio__input"
-                    value="dataset" aria-describedby="helper-1" ng-click="selectMetadataRecords('dataset')"/><label for="metadata-records-1" class="ecl-radio__label"><span
+                    value="dataset" aria-describedby="helper-1" ng-click="selectMetadataRecords('metadata_dataset')"/><label for="metadata-records-1" class="ecl-radio__label"><span
                       class="ecl-radio__box"></span>Data sets and data set series</label>
                 </div>
                 <div class="ecl-radio"><input type="radio" id="metadata-records-2" name="metadata-records" class="ecl-radio__input"
@@ -301,7 +301,7 @@
                   </div>
                 </fieldset>
                 <!-- 2.0 & dataset -->
-                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.metadataVersion == '2.0' && select.metadataRecords == 'dataset'">
+                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.metadataVersion == '2.0' && select.metadataRecords == 'metadata_dataset'">
                   <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed</legend>
                   <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="metadata-20-dataset-options-1"
                       name="checkbox-default" value="commonrequirementsds" ng-click="selectMetadataAdvancedCommonRequirementsDataset()"/><label class="ecl-checkbox__label" for="metadata-20-dataset-options-1"><span
@@ -635,14 +635,14 @@
                         <option value="2">Area management / restriction / regulation zones & reporting units (AM)</option>
                         <option value="3">Bio-geographical regions (BR)</option>
                         <option value="4">Buildings (BU)</option>
-                        <option value="5" disabled>Energy Resources (ER)</option>
+                        <option value="5">Energy Resources (ER)</option>
                         <option value="6">Environmental monitoring Facilities (EF)</option>
                         <option value="7">Habitats and biotopes (HB)</option>
                         <option value="8">Human health and safety (HH)</option>
                         <option value="9">Land use (LU)</option>
-                        <option value="10" disabled>Mineral Resources (MR)</option>
+                        <option value="10">Mineral Resources (MR)</option>
                         <option value="11">Natural risk zones (NZ)</option>
-                        <option value="12" disabled>Oceanographic geographical features (OF)</option>
+                        <option value="12">Oceanographic geographical features (OF)</option>
                         <option value="13">Population distribution and demography (PD)</option>
                         <option value="14">Production and industrial facilities (PF)</option>
                         <option value="15">Sea regions (SR)</option>
@@ -841,6 +841,28 @@
                         class="ecl-checkbox__icon ecl-icon ecl-icon--s">
                         <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
                       </svg></span>Buildings3D</label>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <div id="metadata-group" ng-show="select.datasetType.includes('ER')">
+            <div id="metadata-version-group" class="radio-group">
+              <fieldset aria-describedby="metadata-version-1" class="ecl-form-group">
+                <legend class="ecl-form-label">Select the Application Schemas used in 'Energy Resources (ER)' data set</legend>
+                <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="energy-version-1"
+                    name="adminunits-version" value="ERCOV" ng-click="selectSubEnergy()"/><label class="ecl-checkbox__label" for="energy-version-1"><span
+                      class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                        class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                        <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                      </svg></span>Energy Resources Coverage</label>
+                </div>
+                <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="energy-version-2"
+                    name="adminunits-version" value="ERVEC" ng-click="selectSubEnergy()"/><label class="ecl-checkbox__label" for="energy-version-2"><span
+                      class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                        class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                        <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                      </svg></span>Energy Resources Vector</label>
                 </div>
               </fieldset>
             </div>
@@ -3113,6 +3135,170 @@
                   </div>
                 </fieldset>
 
+                <!-- Energy Resources Coverage (ERCOV) -->
+                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('ER') && select.subEnergy.includes('ERCOV')">
+                  <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed for ANNEX III - Energy Resources Coverage (ERCOV)</legend>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-1"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('inspire_gml_encoding')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-1"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML encoding' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-encoding/master/inspire-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-2"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('gml_application_schemas')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-2"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML application schemas' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/schemas">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-3"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('gml_application_schemas_energy')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-3"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'GML application schemas, Energy Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-4"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('application_schema_energy_base')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-4"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application Schema, Energy Resources Base' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-5"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('application_schema_energy_coverage')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-5"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application Schema, Energy Resources Coverage' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-c-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-6"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('data_consistency')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-6"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/data-consistency">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-7"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('data_consistency_energy')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-7"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency, Energy Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-dc">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-8"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('information_accessibility')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-8"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/information-accessibility">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-9"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('information_accessibility_energy')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-9"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility, Energy Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-ia">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-10"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('reference_systems')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-10"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/reference-systems">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ercov-options-11"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERCOVAdvanced('reference_systems_energy')"/><label class="ecl-checkbox__label" for="dataset-ercov-options-11"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems, Energy Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-rs">source</a>)</label>
+                  </div>
+                </fieldset>
+
+                <!-- Energy Resources Vector (ERVEC) -->
+                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('ER') && select.subEnergy.includes('ERVEC')">
+                  <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed for ANNEX III - Energy Resources Vector (ERVEC)</legend>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-1"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('inspire_gml_encoding')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-1"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML encoding' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-encoding/master/inspire-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-2"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('gml_application_schemas')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-2"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML application schemas' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/schemas">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-3"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('gml_application_schemas_energy')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-3"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'GML application schemas, Energy Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-4"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('application_schema_energy_base')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-4"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application Schema, Energy Resources Base' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-5"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('application_schema_energy_vector')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-5"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application Schema, Energy Resources Vector' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-v-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-6"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('data_consistency')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-6"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/data-consistency">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-7"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('data_consistency_energy')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-7"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency, Energy Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-dc">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-8"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('information_accessibility')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-8"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/information-accessibility">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-9"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('information_accessibility_energy')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-9"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility, Energy Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-ia">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-10"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('reference_systems')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-10"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/reference-systems">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-ervec-options-11"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexERVECAdvanced('reference_systems_energy')"/><label class="ecl-checkbox__label" for="dataset-ervec-options-11"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems, Energy Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-er/master/er-rs">source</a>)</label>
+                  </div>
+                </fieldset>
+
                 <!-- Environmental monitoring Facilities (EF) -->
                 <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('EF')">
                   <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed for ANNEX III - Environmental monitoring Facilities (EF)</legend>
@@ -3638,6 +3824,81 @@
                   </div>
                 </fieldset>
 
+                <!-- Mineral Resources (MR) -->
+                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('MR')">
+                  <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed for ANNEX III - Mineral Resources (MR)</legend>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-mr-options-1"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexMRAdvanced('inspire_gml_encoding')"/><label class="ecl-checkbox__label" for="dataset-mr-options-1"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML encoding' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-encoding/master/inspire-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-mr-options-2"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexMRAdvanced('gml_application_schemas')"/><label class="ecl-checkbox__label" for="dataset-mr-options-2"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML application schemas' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/schemas">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-mr-options-3"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexMRAdvanced('gml_application_schemas_mineral')"/><label class="ecl-checkbox__label" for="dataset-mr-options-3"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance class: 'GML application schemas, Mineral Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-mr/master/mr-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-mr-options-4"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexMRAdvanced('application_schema_mineral')"/><label class="ecl-checkbox__label" for="dataset-mr-options-4"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance class: 'Application schema, Mineral Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-mr/master/mr-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-mr-options-5"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexMRAdvanced('data_consistency')"/><label class="ecl-checkbox__label" for="dataset-mr-options-5"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/data-consistency">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-mr-options-6"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexMRAdvanced('data_consistency_mineral')"/><label class="ecl-checkbox__label" for="dataset-mr-options-6"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency, Mineral Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-mr/master/mr-dc">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-mr-options-7"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexMRAdvanced('information_accessibility')"/><label class="ecl-checkbox__label" for="dataset-mr-options-7"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/information-accessibility">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-mr-options-8"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexMRAdvanced('information_accessibility_mineral')"/><label class="ecl-checkbox__label" for="dataset-mr-options-8"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance class: 'Information accessibility, Mineral Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-mr/master/mr-ia">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-mr-options-9"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexMRAdvanced('reference_systems')"/><label class="ecl-checkbox__label" for="dataset-mr-options-9"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/reference-systems">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-mr-options-10"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexMRAdvanced('reference_systems_mineral')"/><label class="ecl-checkbox__label" for="dataset-mr-options-10"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems, Mineral Resources' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-mr/master/mr-rs">source</a>)</label>
+                  </div>
+                </fieldset>
+
                 <!-- Natural risk zones (NZ) -->
                 <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('NZ')">
                   <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed for ANNEX III - Natural risk zones (NZ)</legend>
@@ -3710,6 +3971,81 @@
                           class="ecl-checkbox__icon ecl-icon ecl-icon--s">
                           <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
                         </svg></span>Conformance Class 'Reference systems, Natural Risk Zones' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-nz/master/nz-rs">source</a>)</label>
+                  </div>
+                </fieldset>
+
+                <!-- Oceanographic geographical features (OF) -->
+                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.datasetType.includes('OF')">
+                  <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed for ANNEX III - Oceanographic geographical features (OF)</legend>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-of-options-1"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOFAdvanced('inspire_gml_encoding')"/><label class="ecl-checkbox__label" for="dataset-of-options-1"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML encoding' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-encoding/master/inspire-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-of-options-2"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOFAdvanced('gml_application_schemas')"/><label class="ecl-checkbox__label" for="dataset-of-options-2"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'INSPIRE GML application schemas' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/schemas">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-of-options-3"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOFAdvanced('gml_application_schemas_oceanographic')"/><label class="ecl-checkbox__label" for="dataset-of-options-3"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'GML application schemas, Oceanographic geographical features' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-of/master/of-gml">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-of-options-4"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOFAdvanced('application_schema_oceanographic')"/><label class="ecl-checkbox__label" for="dataset-of-options-4"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Application Schema, Oceanographic geographical features' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-of/master/of-as">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-of-options-5"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOFAdvanced('data_consistency')"/><label class="ecl-checkbox__label" for="dataset-of-options-5"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/data-consistency">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-of-options-6"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOFAdvanced('data_consistency_oceanographic')"/><label class="ecl-checkbox__label" for="dataset-of-options-6"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Data consistency, Oceanographic geographical features' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-of/master/of-dc">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-of-options-7"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOFAdvanced('information_accessibility')"/><label class="ecl-checkbox__label" for="dataset-of-options-7"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/information-accessibility">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-of-options-8"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOFAdvanced('information_accessibility_oceanographic')"/><label class="ecl-checkbox__label" for="dataset-of-options-8"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Information accessibility, Oceanographic geographical features' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-of/master/of-ia">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-of-options-9"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOFAdvanced('reference_systems')"/><label class="ecl-checkbox__label" for="dataset-of-options-9"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data/master/reference-systems">source</a>)</label>
+                  </div>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="dataset-of-options-10"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectDatasetAnnexOFAdvanced('reference_systems_oceanographic')"/><label class="ecl-checkbox__label" for="dataset-of-options-10"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'Reference systems, Oceanographic geographical features' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/data-of/master/of-rs">source</a>)</label>
                   </div>
                 </fieldset>
 
