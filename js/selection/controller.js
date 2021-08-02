@@ -401,6 +401,13 @@ ngApp.controller('myValidatorController', function($scope) {
 				if ($("#dataset-am-options-4").prop("checked") == true) arrayTestsuiteid.push("EIDbc6635ae-84a6-11ea-bc55-0242ac130003");
 				if (($("#dataset-am-options-10").prop("checked") == false) && ($("#dataset-am-options-8").prop("checked") == false) && ($("#dataset-am-options-6").prop("checked") == false) && ($("#dataset-am-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID0f7a4498-83bb-11ea-bc55-0242ac130003");
 			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("ACMF"))) {
+				if ($("#dataset-acmf-options-10").prop("checked") == true) arrayTestsuiteid.push("EIDe714b79c-6219-4177-acb3-e01ac8f4549d");
+				if ($("#dataset-acmf-options-8").prop("checked") == true) arrayTestsuiteid.push("EIDac70176c-224c-47ea-864a-b53344a2dec8");
+				if ($("#dataset-acmf-options-6").prop("checked") == true) arrayTestsuiteid.push("EID8736653c-eee8-4546-a802-ec62f1792262");
+				if ($("#dataset-acmf-options-4").prop("checked") == true) arrayTestsuiteid.push("EID850a0120-7637-4aef-84aa-5673832e518a");
+				if (($("#dataset-acmf-options-10").prop("checked") == false) && ($("#dataset-acmf-options-8").prop("checked") == false) && ($("#dataset-acmf-options-6").prop("checked") == false) && ($("#dataset-acmf-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID7bc56fcd-d29d-4a71-b6d1-c283e6b63b2c");
+			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("BR"))) {
 				if ($("#dataset-br-options-10").prop("checked") == true) arrayTestsuiteid.push("EID0dc28d32-e8cf-448d-a30d-8c3ba3a1252e");
 				if ($("#dataset-br-options-8").prop("checked") == true) arrayTestsuiteid.push("EID973da927-87eb-42b2-b549-477b9ee5d0bb");
@@ -780,6 +787,7 @@ ngApp.controller('myValidatorController', function($scope) {
 		if (($scope.select.datasetType.includes('OI')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex II - Orthoimagery (OI)";
 		if (($scope.select.datasetType.includes('AF')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Agricultural and aquaculture facilities (AF)";
 		if (($scope.select.datasetType.includes('AM')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Area management / restriction / regulation zones & reporting units (AM)";
+		if (($scope.select.datasetType.includes('ACMF')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Atmospheric conditions and Meteorological geographical features (AC-MF)";
 		if (($scope.select.datasetType.includes('BR')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Bio-geographical regions (BR)";
 		if (($scope.select.datasetType.includes('BU')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Buildings (BU)";
 		if (($scope.select.datasetType.includes('ER')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Energy Resources (ER)";
@@ -1047,6 +1055,10 @@ ngApp.controller('myValidatorController', function($scope) {
 				if ($scope.selectedOptionsAnnex3.includes("0")) {
 					$scope.select.datasetType.push("AF");
 					$scope.selectDatasetType('AF');
+				}
+				if ($scope.selectedOptionsAnnex3.includes("1")) {
+					$scope.select.datasetType.push("ACMF");
+					$scope.selectDatasetType('ACMF');
 				}
 				if ($scope.selectedOptionsAnnex3.includes("2")) {
 					$scope.select.datasetType.push("AM");
@@ -1973,6 +1985,19 @@ ngApp.controller('myValidatorController', function($scope) {
 			$scope.selectDatasetAnnexAMAdvanced('application_schema_areamanagement');
 			$("#dataset-am-options-3").prop("checked", true);
 			$scope.selectDatasetAnnexAMAdvanced('gml_application_schemas_areamanagement');
+		}
+		if (datasetType == 'ACMF') {
+			$scope.select.atLeastOneACMF = 0;
+			$("#dataset-acmf-options-10").prop("checked", true);
+			$scope.selectDatasetAnnexACMFAdvanced('reference_systems_atmospheric');
+			$("#dataset-acmf-options-8").prop("checked", true);
+			$scope.selectDatasetAnnexACMFAdvanced('information_accessibility_atmospheric');
+			$("#dataset-acmf-options-6").prop("checked", true);
+			$scope.selectDatasetAnnexACMFAdvanced('data_consistency_atmospheric');
+			$("#dataset-acmf-options-4").prop("checked", true);
+			$scope.selectDatasetAnnexACMFAdvanced('application_schema_atmospheric');
+			$("#dataset-acmf-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexACMFAdvanced('gml_application_schemas_atmospheric');
 		}
 		if (datasetType == 'BR') {
 			$scope.select.atLeastOneBR = 0;
@@ -4250,6 +4275,77 @@ ngApp.controller('myValidatorController', function($scope) {
 			} else {
 				$scope.select.atLeastOneAM--;
 				$("#dataset-am-options-9").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
+	$scope.selectDatasetAnnexACMFAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-acmf-options-1").prop("checked");
+			$("#dataset-acmf-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-acmf-options-2").prop("checked");
+			$("#dataset-acmf-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_atmospheric') {
+			if ($("#dataset-acmf-options-4").prop("checked") == true) {
+				$("#dataset-acmf-options-3").prop("checked", true);
+			} else {
+				$("#dataset-acmf-options-3").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_atmospheric') {
+			if ($("#dataset-acmf-options-4").prop("checked") == true) {
+				$scope.select.atLeastOneACMF++;
+				$("#dataset-acmf-options-3").prop("checked", true);
+				$("#dataset-acmf-options-2").prop("checked", true);
+				$("#dataset-acmf-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneACMF--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-acmf-options-5").prop("checked");
+			$("#dataset-acmf-options-5").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_atmospheric') {
+			if ($("#dataset-acmf-options-6").prop("checked") == true) {
+				$scope.select.atLeastOneACMF++;
+				$("#dataset-acmf-options-5").prop("checked", true);
+				$("#dataset-acmf-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneACMF--;
+				$("#dataset-acmf-options-5").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-acmf-options-7").prop("checked");
+			$("#dataset-acmf-options-7").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_atmospheric') {
+			if ($("#dataset-acmf-options-8").prop("checked") == true) {
+				$scope.select.atLeastOneACMF++;
+				$("#dataset-acmf-options-7").prop("checked", true);
+				$("#dataset-acmf-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneACMF--;
+				$("#dataset-acmf-options-7").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-acmf-options-9").prop("checked");
+			$("#dataset-acmf-options-9").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_atmospheric') {
+			if ($("#dataset-acmf-options-10").prop("checked") == true) {
+				$scope.select.atLeastOneACMF++;
+				$("#dataset-acmf-options-9").prop("checked", true);
+				$("#dataset-acmf-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneACMF--;
+				$("#dataset-acmf-options-9").prop("checked", false);
 			}
 		}
 		$scope.prefillLabel();
