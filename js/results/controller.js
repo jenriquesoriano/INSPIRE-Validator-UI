@@ -892,7 +892,13 @@ ngApp.controller('myValidatorController', function($scope) {
 			if (testSuiteId == "EID2e792ebf-e98e-42d3-850d-80bbb0b568b9") testSuiteDesc = "Conformance class: 'GML application schemas, Agricultural and Aquaculture Facilities'";
 			if (testSuiteId == "EID36dec890-a302-442e-ae35-1edcfa5ca4dd") testSuiteDesc = "Conformance class: 'Information accessibility, Agricultural and Aquaculture Facilities'";
 			if (testSuiteId == "EID2d2491df-b01e-4527-a089-82d6ffa88a80") testSuiteDesc = "Conformance class: 'Reference systems, Agricultural and Aquaculture Facilities'";
-
+			
+			if (testSuiteId == "EID7bc56fcd-d29d-4a71-b6d1-c283e6b63b2c") testSuiteDesc = "Conformance Class 'GML application schemas, Atmospheric Conditions and Meteorological Geographical Features'";
+			if (testSuiteId == "EID850a0120-7637-4aef-84aa-5673832e518a") testSuiteDesc = "Conformance Class 'Application schema, Atmospheric Conditions and Meteorological Geographical Features'";
+			if (testSuiteId == "EID8736653c-eee8-4546-a802-ec62f1792262") testSuiteDesc = "Conformance Class 'Data consistency, Atmospheric Conditions and Meteorological Geographical Features'";
+			if (testSuiteId == "EIDac70176c-224c-47ea-864a-b53344a2dec8") testSuiteDesc = "Conformance Class 'Information accessibility, Atmospheric Conditions and Meteorological Geographical Features'";
+			if (testSuiteId == "EIDe714b79c-6219-4177-acb3-e01ac8f4549d") testSuiteDesc = "Conformance Class 'Reference systems, Atmospheric Conditions and Meteorological Geographical Features'";
+			
 			if (testSuiteId == "EID46af85e3-f8cc-4812-b8b7-36d99897084c") testSuiteDesc = "Conformance class: 'Application schema, Orthoimagery'";
 			if (testSuiteId == "EIDdd6d5c5f-6d38-45a1-b85d-b9f2606bff2d") testSuiteDesc = "Conformance class: 'Data consistency, Orthoimagery'";
 			if (testSuiteId == "EID2151146d-da46-4242-9471-0918db59abb5") testSuiteDesc = "Conformance class: 'GML application schemas, Orthoimagery'";
