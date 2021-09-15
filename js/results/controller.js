@@ -631,7 +631,7 @@ ngApp.controller('myValidatorController', function($scope) {
 			testSuiteId = item.replace("//v2", "/v2");
 			testSuiteId = testSuiteId.replace($scope.urlRealValidator + "ExecutableTestSuites/", "");
 			testSuiteId = testSuiteId.replace(".json", "");
-			testSuiteId = "EID" + testSuiteId;
+			if (testSuiteId.substring(0,3) != "EID") testSuiteId = "EID" + testSuiteId;
 			var testSuiteDesc = testSuiteId;
 			if (testSuiteId == "EIDe3500038-e37c-4dcf-806c-6bc82d585b3b") testSuiteDesc = "Conformance Class XML encoding of ISO 19115/19119 metadata";
 			if (testSuiteId == "EIDec7323d5-d8f0-4cfe-b23a-b826df86d58c") testSuiteDesc = "Conformance Class INSPIRE Profile based on EN ISO 19115 and EN ISO 19119";
@@ -898,6 +898,27 @@ ngApp.controller('myValidatorController', function($scope) {
 			if (testSuiteId == "EID2151146d-da46-4242-9471-0918db59abb5") testSuiteDesc = "Conformance class: 'GML application schemas, Orthoimagery'";
 			if (testSuiteId == "EID3476ab51-fd62-4b19-a563-f3c05373c2ed") testSuiteDesc = "Conformance class: 'Information accessibility, Orthoimagery'";
 			if (testSuiteId == "EID1b65c0d1-6374-4638-a489-86ba4d5c39d6") testSuiteDesc = "Conformance class: 'Reference systems, Orthoimagery'";
+
+			if (testSuiteId == "EID1b45ee05-c7f1-471c-89a4-5e603ce3f056") testSuiteDesc = "Conformance class: 'GML application schemas, Mineral Resources'";
+			if (testSuiteId == "EIDda904b41-b762-4aca-8af4-204f427ba3e8") testSuiteDesc = "Conformance class: 'Application schema, Mineral Resources'";
+			if (testSuiteId == "EIDd2d1c565-7bdb-4da5-b13b-5b1f14e6aed1") testSuiteDesc = "Conformance Class 'Data consistency, Mineral Resources'";
+			if (testSuiteId == "EID0ac8bdce-710a-4287-92ca-6444cbbb2263") testSuiteDesc = "Conformance class: 'Information accessibility, Mineral Resources'";
+			if (testSuiteId == "EIDcd930d18-2ad2-48d8-ac82-75f8af6733b6") testSuiteDesc = "Conformance Class 'Reference systems, Mineral Resources'";
+
+			if (testSuiteId == "EID62825579-45ef-4ec3-8669-4f95a3ac60da") testSuiteDesc = "Conformance Class 'GML application schemas, Oceanographic geographical features'";
+			if (testSuiteId == "EIDc030d752-2559-4ef2-9267-2d7d844720aa") testSuiteDesc = "Conformance Class 'Application Schema, Oceanographic geographical features'";
+			if (testSuiteId == "EIDaaec0d06-e36d-41db-bc3c-b425466435e5") testSuiteDesc = "Conformance Class 'Data consistency, Oceanographic geographical features'";
+			if (testSuiteId == "EID7f3dd0a4-a0af-4fd6-a507-fee53db7742d") testSuiteDesc = "Conformance Class 'Information accessibility, Oceanographic geographical features'";
+			if (testSuiteId == "EID6827884c-c30d-464d-9ee7-3b9874b83c7f") testSuiteDesc = "Conformance Class 'Reference systems, Oceanographic geographical features'";
+
+			if (testSuiteId == "EIDe009440c-e545-4227-9967-aff1b26f8c81") testSuiteDesc = "Conformance Class 'GML application schemas, Energy Resources'";
+			if (testSuiteId == "EID9b6e3765-3744-40ee-98ec-243ac978915f") testSuiteDesc = "Conformance Class 'Application Schema, Energy Resources Base'";
+			if (testSuiteId == "EID599aa296-6000-452f-9b97-18d0565f6b36") testSuiteDesc = "Conformance Class 'Application Schema, Energy Resources Coverage'";
+			if (testSuiteId == "EIDfad66155-f16c-4e9a-8c6c-a010f3c6de11") testSuiteDesc = "Conformance Class 'Data consistency, Energy Resources'";
+			if (testSuiteId == "EID018c7222-6d56-4b4b-8df3-ac511914fe85") testSuiteDesc = "Conformance Class 'Information accessibility, Energy Resources'";
+			if (testSuiteId == "EIDb87f5e2e-72d8-40e5-a0fd-34e3829f9426") testSuiteDesc = "Conformance Class 'Reference systems, Energy Resources'";
+
+			if (testSuiteId == "EID0901c212-8b06-4c29-b648-c411678b9369") testSuiteDesc = "Conformance Class 'Application Schema, Energy Resources Vector'";
 
 			return testSuiteDesc;
 		}
