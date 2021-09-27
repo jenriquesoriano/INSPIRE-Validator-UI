@@ -3,6 +3,7 @@ ngApp.controller('myValidatorController', function($scope) {
 	$scope.urlRealValidator = serverRealURL;
 	$scope.betaBanner = betaBanner;
 	$scope.labelStaging = labelStaging;
+	$scope.serverToken = serverToken;
 
 
 	// Show/Hide Beta banner
@@ -349,7 +350,7 @@ ngApp.controller('myValidatorController', function($scope) {
 						$(document.body).css({
 							'cursor': 'wait'
 						});
-						$.ajax({
+						var requestJSON = {
 							type: "POST",
 							url: $scope.urlValidator + "TestRuns",
 							data: JSON.stringify(testRunRequest),
@@ -368,7 +369,9 @@ ngApp.controller('myValidatorController', function($scope) {
 								console.log(errMsg);
 								alert(JSON.stringify(errMsg));
 							}
-						});
+						};
+						if ($scope.serverToken != "") requestJSON.headers = { 'x-api-key': $scope.serverToken }
+						$.ajax(requestJSON);
 					} else {
 						location.href = "../test-rerun/index.html?parameters=" + encrypted;
 					}

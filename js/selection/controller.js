@@ -5,6 +5,7 @@ ngApp.controller('myValidatorController', function($scope) {
 	$scope.captchaEnabled = captchaEnabled;
 	$scope.betaBanner = betaBanner;
 	$scope.labelStaging = labelStaging;
+	$scope.serverToken = serverToken;
 
 	$.ajaxSetup({
 		cache: false
@@ -6691,7 +6692,7 @@ $scope.sendRunRequest = function() {
 			$(document.body).css({
 				'cursor': 'wait'
 			});
-			$.ajax({
+			var requestJSON = {
 				type: "POST",
 				url: $scope.urlValidator + "TestRuns",
 				data: JSON.stringify(testRunRequest),
@@ -6716,7 +6717,9 @@ $scope.sendRunRequest = function() {
 					}, 2500).fadeOut(12000);
 					progress(12, 12, $('#progressBar3'));
 				}
-			});
+			};
+			if ($scope.serverToken != "") requestJSON.headers = { 'x-api-key': $scope.serverToken }
+			$.ajax(requestJSON);
 		}
 	}
 
