@@ -67,7 +67,7 @@ ngApp.controller('myValidatorController', function($scope) {
 
 	$scope.selectMetadataRecords = function(metadataRecords) {
 		$scope.select.metadataRecords = metadataRecords;
-		if (metadataRecords == "dataset") {
+		if (metadataRecords == "metadata_dataset") {
 			$("#metadata-20-dataset-options-1").prop("checked", true);
 			$("#metadata-20-dataset-options-2").prop("checked", true);
 			$("#metadata-20-dataset-options-3").prop("checked", true);
@@ -108,13 +108,13 @@ ngApp.controller('myValidatorController', function($scope) {
 			if (($scope.select.typeResource == "metadata") && ($scope.select.metadataVersion == "1.3") && ($scope.select.metadataRecords == "-") && ($scope.select.metadataAdvancedOptions === true) && ($scope.select.metadataAdvancedInteroperability == true)) $scope.restservice.testsuiteid = "EID9a31ecfc-6673-43c0-9a31-b4595fb53a98";
 			if (($scope.select.typeResource == "metadata") && ($scope.select.metadataVersion == "1.3") && ($scope.select.metadataRecords == "-") && ($scope.select.metadataAdvancedOptions === true) && ($scope.select.metadataAdvancedInteroperability == false) && ($scope.select.metadataAdvancedInspireProfile == true)) $scope.restservice.testsuiteid = "EIDec7323d5-d8f0-4cfe-b23a-b826df86d58c";
 			if (($scope.select.typeResource == "metadata") && ($scope.select.metadataVersion == "1.3") && ($scope.select.metadataRecords == "-") && ($scope.select.metadataAdvancedOptions === true) && ($scope.select.metadataAdvancedInteroperability == false) && ($scope.select.metadataAdvancedInspireProfile == false)) $scope.restservice.testsuiteid = "EIDe3500038-e37c-4dcf-806c-6bc82d585b3b";
-			if (($scope.select.typeResource == "metadata") && ($scope.select.metadataVersion == "2.0") && ($scope.select.metadataRecords == "dataset") && ($scope.select.metadataAdvancedOptions === false)) {
+			if (($scope.select.typeResource == "metadata") && ($scope.select.metadataVersion == "2.0") && ($scope.select.metadataRecords == "metadata_dataset") && ($scope.select.metadataAdvancedOptions === false)) {
 				arrayTestsuiteid = [];
 				arrayTestsuiteid.push("EID2be1480a-fe42-40b2-9420-eb0e69385c80");
 				arrayTestsuiteid.push("EID0b86f7a3-2947-4841-823d-6a00d8e06d70");
 				$scope.restservice.testsuiteid = arrayTestsuiteid;
 			}
-			if (($scope.select.typeResource == "metadata") && ($scope.select.metadataVersion == "2.0") && ($scope.select.metadataRecords == "dataset") && ($scope.select.metadataAdvancedOptions === true)) {
+			if (($scope.select.typeResource == "metadata") && ($scope.select.metadataVersion == "2.0") && ($scope.select.metadataRecords == "metadata_dataset") && ($scope.select.metadataAdvancedOptions === true)) {
 				if (($scope.select.metadataAdvancedCommonRequirementsDataset === true) && ($scope.select.metadataAdvancedConformanceClass1 === true) && ($scope.select.metadataAdvancedConformanceClass2 === true) && ($scope.select.metadataAdvancedConformanceClass2b === true)) {
 					arrayTestsuiteid = [];
 					arrayTestsuiteid.push("EID2be1480a-fe42-40b2-9420-eb0e69385c80");
@@ -401,6 +401,13 @@ ngApp.controller('myValidatorController', function($scope) {
 				if ($("#dataset-am-options-4").prop("checked") == true) arrayTestsuiteid.push("EIDbc6635ae-84a6-11ea-bc55-0242ac130003");
 				if (($("#dataset-am-options-10").prop("checked") == false) && ($("#dataset-am-options-8").prop("checked") == false) && ($("#dataset-am-options-6").prop("checked") == false) && ($("#dataset-am-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID0f7a4498-83bb-11ea-bc55-0242ac130003");
 			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("ACMF"))) {
+				if ($("#dataset-acmf-options-10").prop("checked") == true) arrayTestsuiteid.push("EIDe714b79c-6219-4177-acb3-e01ac8f4549d");
+				if ($("#dataset-acmf-options-8").prop("checked") == true) arrayTestsuiteid.push("EIDac70176c-224c-47ea-864a-b53344a2dec8");
+				if ($("#dataset-acmf-options-6").prop("checked") == true) arrayTestsuiteid.push("EID8736653c-eee8-4546-a802-ec62f1792262");
+				if ($("#dataset-acmf-options-4").prop("checked") == true) arrayTestsuiteid.push("EID850a0120-7637-4aef-84aa-5673832e518a");
+				if (($("#dataset-acmf-options-10").prop("checked") == false) && ($("#dataset-acmf-options-8").prop("checked") == false) && ($("#dataset-acmf-options-6").prop("checked") == false) && ($("#dataset-acmf-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID7bc56fcd-d29d-4a71-b6d1-c283e6b63b2c");
+			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("BR"))) {
 				if ($("#dataset-br-options-10").prop("checked") == true) arrayTestsuiteid.push("EID0dc28d32-e8cf-448d-a30d-8c3ba3a1252e");
 				if ($("#dataset-br-options-8").prop("checked") == true) arrayTestsuiteid.push("EID973da927-87eb-42b2-b549-477b9ee5d0bb");
@@ -431,6 +438,32 @@ ngApp.controller('myValidatorController', function($scope) {
 					if ($("#dataset-bu3d-options-4").prop("checked") == true) arrayTestsuiteid.push("EID45e5267c-ab6e-4bb7-a6b3-ee7b7ec5e053");
 					if ($("#dataset-bu3d-options-4").prop("checked") == false) {
 						if ($("#dataset-bu3d-options-3").prop("checked") == true) arrayTestsuiteid.push("EID94fdd1a9-68bf-4a0a-aa89-76659436a676");
+					}
+				}
+			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("ER")) && $scope.select.subEnergy.includes("ERCOV")) {
+				if ($("#dataset-ercov-options-11").prop("checked") == true) arrayTestsuiteid.push("EIDb87f5e2e-72d8-40e5-a0fd-34e3829f9426");
+				if ($("#dataset-ercov-options-9").prop("checked") == true) arrayTestsuiteid.push("EID018c7222-6d56-4b4b-8df3-ac511914fe85");
+				if ($("#dataset-ercov-options-7").prop("checked") == true) arrayTestsuiteid.push("EIDfad66155-f16c-4e9a-8c6c-a010f3c6de11");
+				if ($("#dataset-ercov-options-5").prop("checked") == true) arrayTestsuiteid.push("EID599aa296-6000-452f-9b97-18d0565f6b36");
+
+				if (($("#dataset-ercov-options-11").prop("checked") == false) && ($("#dataset-ercov-options-9").prop("checked") == false) && ($("#dataset-ercov-options-7").prop("checked") == false) && ($("#dataset-ercov-options-5").prop("checked") == false)) {
+					if ($("#dataset-ercov-options-4").prop("checked") == true) arrayTestsuiteid.push("EID9b6e3765-3744-40ee-98ec-243ac978915f");
+					if ($("#dataset-ercov-options-4").prop("checked") == false) {
+						if ($("#dataset-ercov-options-3").prop("checked") == true) arrayTestsuiteid.push("EIDe009440c-e545-4227-9967-aff1b26f8c81");
+					}
+				}
+			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("ER")) && $scope.select.subEnergy.includes("ERVEC")) {
+				if ($("#dataset-ervec-options-11").prop("checked") == true) arrayTestsuiteid.push("EIDb87f5e2e-72d8-40e5-a0fd-34e3829f9426");
+				if ($("#dataset-ervec-options-9").prop("checked") == true) arrayTestsuiteid.push("EID018c7222-6d56-4b4b-8df3-ac511914fe85");
+				if ($("#dataset-ervec-options-7").prop("checked") == true) arrayTestsuiteid.push("EIDfad66155-f16c-4e9a-8c6c-a010f3c6de11");
+				if ($("#dataset-ervec-options-5").prop("checked") == true) arrayTestsuiteid.push("EID0901c212-8b06-4c29-b648-c411678b9369");
+
+				if (($("#dataset-ervec-options-11").prop("checked") == false) && ($("#dataset-ervec-options-9").prop("checked") == false) && ($("#dataset-ervec-options-7").prop("checked") == false) && ($("#dataset-ervec-options-5").prop("checked") == false)) {
+					if ($("#dataset-ervec-options-4").prop("checked") == true) arrayTestsuiteid.push("EID9b6e3765-3744-40ee-98ec-243ac978915f");
+					if ($("#dataset-ervec-options-4").prop("checked") == false) {
+						if ($("#dataset-ervec-options-3").prop("checked") == true) arrayTestsuiteid.push("EIDe009440c-e545-4227-9967-aff1b26f8c81");
 					}
 				}
 			}
@@ -483,12 +516,26 @@ ngApp.controller('myValidatorController', function($scope) {
 				if ($("#dataset-selu-options-4").prop("checked") == true) arrayTestsuiteid.push("EIDba63bc6d-c67c-48b1-b7ee-654e6fffa0bd");
 				if (($("#dataset-selu-options-10").prop("checked") == false) && ($("#dataset-selu-options-8").prop("checked") == false) && ($("#dataset-selu-options-6").prop("checked") == false) && ($("#dataset-selu-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID0163e019-90b6-4dd9-8c9c-d2d1d7fc5f69");
 			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("MR"))) {
+				if ($("#dataset-mr-options-10").prop("checked") == true) arrayTestsuiteid.push("EIDcd930d18-2ad2-48d8-ac82-75f8af6733b6");
+				if ($("#dataset-mr-options-8").prop("checked") == true) arrayTestsuiteid.push("EID0ac8bdce-710a-4287-92ca-6444cbbb2263");
+				if ($("#dataset-mr-options-6").prop("checked") == true) arrayTestsuiteid.push("EIDd2d1c565-7bdb-4da5-b13b-5b1f14e6aed1");
+				if ($("#dataset-mr-options-4").prop("checked") == true) arrayTestsuiteid.push("EIDda904b41-b762-4aca-8af4-204f427ba3e8");
+				if (($("#dataset-mr-options-10").prop("checked") == false) && ($("#dataset-mr-options-8").prop("checked") == false) && ($("#dataset-mr-options-6").prop("checked") == false) && ($("#dataset-mr-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID1b45ee05-c7f1-471c-89a4-5e603ce3f056");
+			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("NZ"))) {
 				if ($("#dataset-nz-options-10").prop("checked") == true) arrayTestsuiteid.push("EIDf62fe181-52f2-4212-b925-fc7ac8bfb2a1");
 				if ($("#dataset-nz-options-8").prop("checked") == true) arrayTestsuiteid.push("EIDe3d08307-45ad-4797-9074-ced0147797b5");
 				if ($("#dataset-nz-options-6").prop("checked") == true) arrayTestsuiteid.push("EIDc1386fc3-eb79-41dc-a2ff-9ca48e0576eb");
 				if ($("#dataset-nz-options-4").prop("checked") == true) arrayTestsuiteid.push("EID5aab5d8a-e432-47dd-b072-7cbf520035be");
 				if (($("#dataset-nz-options-10").prop("checked") == false) && ($("#dataset-nz-options-8").prop("checked") == false) && ($("#dataset-nz-options-6").prop("checked") == false) && ($("#dataset-nz-options-4").prop("checked") == false)) arrayTestsuiteid.push("EIDeca530d8-a4c0-421a-b1c3-4409fe31e10b");
+			}
+			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("OF"))) {
+				if ($("#dataset-of-options-10").prop("checked") == true) arrayTestsuiteid.push("EID6827884c-c30d-464d-9ee7-3b9874b83c7f");
+				if ($("#dataset-of-options-8").prop("checked") == true) arrayTestsuiteid.push("EID7f3dd0a4-a0af-4fd6-a507-fee53db7742d");
+				if ($("#dataset-of-options-6").prop("checked") == true) arrayTestsuiteid.push("EIDaaec0d06-e36d-41db-bc3c-b425466435e5");
+				if ($("#dataset-of-options-4").prop("checked") == true) arrayTestsuiteid.push("EIDc030d752-2559-4ef2-9267-2d7d844720aa");
+				if (($("#dataset-of-options-10").prop("checked") == false) && ($("#dataset-of-options-8").prop("checked") == false) && ($("#dataset-of-options-6").prop("checked") == false) && ($("#dataset-of-options-4").prop("checked") == false)) arrayTestsuiteid.push("EID62825579-45ef-4ec3-8669-4f95a3ac60da");
 			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("PD"))) {
 				if ($("#dataset-pd-options-10").prop("checked") == true) arrayTestsuiteid.push("EIDc6b969f1-c2a8-4335-bc28-2ae8ee0fe20c");
@@ -651,6 +698,7 @@ ngApp.controller('myValidatorController', function($scope) {
 	$scope.prefillLabel = function() {
 		$scope.runTest();
 		var testSuiteId = $scope.restservice.testsuiteid;
+		var testSuiteDesc = "-";
 		// METADATA
 		if (testSuiteId == "EIDe3500038-e37c-4dcf-806c-6bc82d585b3b") testSuiteDesc = "Conformance Class XML encoding of ISO 19115/19119 metadata";
 		if (testSuiteId == "EIDec7323d5-d8f0-4cfe-b23a-b826df86d58c") testSuiteDesc = "Conformance Class INSPIRE Profile based on EN ISO 19115 and EN ISO 19119";
@@ -669,9 +717,9 @@ ngApp.controller('myValidatorController', function($scope) {
 		if (testSuiteId == "EIDa593a7ad-42d9-46d0-985d-9dff3e684428") testSuiteDesc = "Conformance Class 7: INSPIRE Harmonised Spatial Data Services metadata";
 		if (testSuiteId == "EIDeec9d674-d94b-4d8d-b744-1309c6cae1d2") testSuiteDesc = "Conformance Class View Service WMS";
 		if (testSuiteId == "EID550ceacf-b3cb-47a0-b2dd-d3edb18344a9") testSuiteDesc = "Conformance Class View Service WMTS";
-		if (testSuiteId == "EIDed2d3501-d700-4ff9-b9bf-070dece8ddbd") testSuiteDesc = "Conformance Class Direct WFS";
 		if (testSuiteId == "EID18d66578-6ad6-3d3d-a090-0cf885c61de1") testSuiteDesc = "WFS 2.0 (OGC 09-025r2/ISO 19142) Conformance Test Suite";
 		if (testSuiteId == "EID174edf55-699b-446c-968c-1892a4d8d5bd") testSuiteDesc = "Conformance Class Pre-defined WFS";
+		if (testSuiteId == "EIDed2d3501-d700-4ff9-b9bf-070dece8ddbd") testSuiteDesc = "Conformance Class Direct WFS";
 		if (testSuiteId == "EID11571c92-3940-4f42-a6cd-5e2b1c6f4d93") testSuiteDesc = "Conformance Class Pre-defined Atom";
 		if (testSuiteId == "EID074570ad-d720-47b3-af79-d54201793404") testSuiteDesc = "Conformance Class Download Service WCS Core";
 		if (testSuiteId == "EID0ff73873-5601-41ff-8d92-3fb1fbba3cf2") testSuiteDesc = "Conformance Class Download Service Pre-defined SOS";
@@ -681,6 +729,38 @@ ngApp.controller('myValidatorController', function($scope) {
 		if (testSuiteId == "EID09820daf-62b2-4fa3-a95f-56a0d2b7c4d8") testSuiteDesc = "Conformance Class INSPIRE GML application schemas";
 		if (testSuiteId == "EID499937ea-0590-42d2-bd7a-1cafff35ecdb") testSuiteDesc = "Conformance Class Information accessibility";
 		if (testSuiteId == "EID63f586f0-080c-493b-8ca2-9919427440cc") testSuiteDesc = "Conformance Class Reference systems";
+		if (Array.isArray(testSuiteId)) {
+			if (testSuiteId.includes("EIDe3500038-e37c-4dcf-806c-6bc82d585b3b")) testSuiteDesc = "Conformance Class XML encoding of ISO 19115/19119 metadata";
+			if (testSuiteId.includes("EIDec7323d5-d8f0-4cfe-b23a-b826df86d58c")) testSuiteDesc = "Conformance Class INSPIRE Profile based on EN ISO 19115 and EN ISO 19119";
+			if (testSuiteId.includes("EID9a31ecfc-6673-43c0-9a31-b4595fb53a98")) vtestSuiteDesc = "Conformance class Metadata for interoperability";
+			if (testSuiteId.includes("EID59692c11-df86-49ad-be7f-94a1e1ddd8da")) testSuiteDesc = "Common Requirements for ISO/TC 19139:2007 based INSPIRE metadata records";
+			if (testSuiteId.includes("EIDe4a95862-9cc9-436b-9fdd-a0115d342350")) testSuiteDesc = "Conformance Class 1: Baseline metadata for data sets and data set series";
+			if (testSuiteId.includes("EID2be1480a-fe42-40b2-9420-eb0e69385c80")) testSuiteDesc = "Conformance Class 2: INSPIRE data sets and data set series interoperability metadata";
+			if (testSuiteId.includes("EID0b86f7a3-2947-4841-823d-6a00d8e06d70")) testSuiteDesc = "Conformance Class 2b: INSPIRE data sets and data set series metadata for Monitoring";
+			if (testSuiteId.includes("EID59692c11-df86-49ad-be7f-94a1e1ddd8da")) testSuiteDesc = "Common Requirements for ISO/TC 19139:2007 based INSPIRE metadata records";
+			if (testSuiteId.includes("EID8f869e23-c9e9-4e86-8dca-be30ff421229")) testSuiteDesc = "Conformance Class 3: INSPIRE Spatial Data Service baseline metadata";
+			if (testSuiteId.includes("EID606587df-65a8-4b7b-9eee-e0d94daaa42a")) testSuiteDesc = "Conformance Class 4: INSPIRE Network Services metadata";
+			if (testSuiteId.includes("EID59692c11-df86-49ad-be7f-94a1e1ddd8da")) testSuiteDesc = "Common Requirements for ISO/TC 19139:2007 based INSPIRE metadata records";
+			if (testSuiteId.includes("EID8f869e23-c9e9-4e86-8dca-be30ff421229")) testSuiteDesc = "Conformance Class 3: INSPIRE Spatial Data Service baseline metadata.";
+			if (testSuiteId.includes("EID8db54d8a-8578-4959-b891-5394d9f53a28")) testSuiteDesc = "Conformance Class 5: INSPIRE Invocable Spatial Data Services metadata";
+			if (testSuiteId.includes("EID7514777a-6cb8-499c-acd5-912496dc84e9")) testSuiteDesc = "Conformance Class 6: INSPIRE Interoperable Spatial Data Services metadata";
+			if (testSuiteId.includes("EIDa593a7ad-42d9-46d0-985d-9dff3e684428")) testSuiteDesc = "Conformance Class 7: INSPIRE Harmonised Spatial Data Services metadata";
+			if (testSuiteId.includes("EIDeec9d674-d94b-4d8d-b744-1309c6cae1d2")) testSuiteDesc = "Conformance Class View Service WMS";
+			if (testSuiteId.includes("EID550ceacf-b3cb-47a0-b2dd-d3edb18344a9")) testSuiteDesc = "Conformance Class View Service WMTS";
+			if (testSuiteId.includes("EID18d66578-6ad6-3d3d-a090-0cf885c61de1")) testSuiteDesc = "WFS 2.0 (OGC 09-025r2/ISO 19142) Conformance Test Suite";
+			if (testSuiteId.includes("EID174edf55-699b-446c-968c-1892a4d8d5bd")) testSuiteDesc = "Conformance Class Pre-defined WFS";
+			if (testSuiteId.includes("EIDed2d3501-d700-4ff9-b9bf-070dece8ddbd")) testSuiteDesc = "Conformance Class Direct WFS";
+			if (testSuiteId.includes("EID11571c92-3940-4f42-a6cd-5e2b1c6f4d93")) testSuiteDesc = "Conformance Class Pre-defined Atom";
+			if (testSuiteId.includes("EID074570ad-d720-47b3-af79-d54201793404")) testSuiteDesc = "Conformance Class Download Service WCS Core";
+			if (testSuiteId.includes("EID0ff73873-5601-41ff-8d92-3fb1fbba3cf2")) testSuiteDesc = "Conformance Class Download Service Pre-defined SOS";
+			if (testSuiteId.includes("EIDc837298f-a10e-42d1-88f2-f1415cbbb463")) testSuiteDesc = "Conformance Class Discovery Service CSW";
+			if (testSuiteId.includes("EID545f9e49-009b-4114-9333-7ca26413b5d4")) testSuiteDesc = "Conformance Class INSPIRE GML encoding";
+			if (testSuiteId.includes("EID61070ae8-13cb-4303-a340-72c8b877b00a")) testSuiteDesc = "Conformance Class Data consistency";
+			if (testSuiteId.includes("EID09820daf-62b2-4fa3-a95f-56a0d2b7c4d8")) testSuiteDesc = "Conformance Class INSPIRE GML application schemas";
+			if (testSuiteId.includes("EID499937ea-0590-42d2-bd7a-1cafff35ecdb")) testSuiteDesc = "Conformance Class Information accessibility";
+			if (testSuiteId.includes("EID63f586f0-080c-493b-8ca2-9919427440cc")) testSuiteDesc = "Conformance Class Reference systems";
+		}
+		console.log(testSuiteId);
 		// VIEW SERVICE
 		if (testSuiteId == "EIDeec9d674-d94b-4d8d-b744-1309c6cae1d2") testSuiteDesc = "Conformance Class View Service WMS";
 		if (testSuiteId == "EID550ceacf-b3cb-47a0-b2dd-d3edb18344a9") testSuiteDesc = "Conformance Class View Service WMTS";
@@ -707,13 +787,17 @@ ngApp.controller('myValidatorController', function($scope) {
 		if (($scope.select.datasetType.includes('OI')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex II - Orthoimagery (OI)";
 		if (($scope.select.datasetType.includes('AF')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Agricultural and aquaculture facilities (AF)";
 		if (($scope.select.datasetType.includes('AM')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Area management / restriction / regulation zones & reporting units (AM)";
+		if (($scope.select.datasetType.includes('ACMF')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Atmospheric conditions and Meteorological geographical features (AC-MF)";
 		if (($scope.select.datasetType.includes('BR')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Bio-geographical regions (BR)";
 		if (($scope.select.datasetType.includes('BU')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Buildings (BU)";
+		if (($scope.select.datasetType.includes('ER')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Energy Resources (ER)";
 		if (($scope.select.datasetType.includes('EF')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Environmental monitoring Facilities (EF)";
 		if (($scope.select.datasetType.includes('HB')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Habitats and biotopes (HB)";
 		if (($scope.select.datasetType.includes('HH')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Human health and safety (HH)";
 		if (($scope.select.datasetType.includes('LU')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Land Use (LU)";
+		if (($scope.select.datasetType.includes('MR')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Mineral Resources (MR)";
 		if (($scope.select.datasetType.includes('NZ')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Natural risk zones (NZ)";
+		if (($scope.select.datasetType.includes('OF')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Oceanographic geographical features (OF)";
 		if (($scope.select.datasetType.includes('PD')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Population distribution and demography (PD)";
 		if (($scope.select.datasetType.includes('PF')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Production and industrial facilities (PF)";
 		if (($scope.select.datasetType.includes('SR')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex III - Sea regions (SR)";
@@ -754,7 +838,7 @@ ngApp.controller('myValidatorController', function($scope) {
 	$scope.select = {};
 	$scope.select.typeResource = "metadata";
 	$scope.select.metadataVersion = "2.0";
-	$scope.select.metadataRecords = "dataset";
+	$scope.select.metadataRecords = "metadata_dataset";
 	$scope.select.visibleMetadataRecords = true;
 	$scope.select.metadataAdvancedOptions = false;
 	$scope.select.metadataAdvancedXMLEncoding = true;
@@ -784,7 +868,8 @@ ngApp.controller('myValidatorController', function($scope) {
 	$scope.select.downloadServiceType = "WFS";
 	$scope.select.downloadSubServiceType = "direct2";
 	$scope.select.discoveryServiceType = "CSW";
-	$scope.select.datasetType = 'CCS';
+	//$scope.select.datasetType = 'CCS';
+	$scope.select.datasetType = '-';
 
 	$("#text-input-url").change(function() {
 		if ($("#text-input-url").val().trim() != "") {
@@ -822,6 +907,7 @@ ngApp.controller('myValidatorController', function($scope) {
 	$scope.selectTypeResource = function(typeResource) {
 		$scope.select.typeResource = typeResource;
 		if (typeResource == "metadata") {
+			$scope.select.datasetType = '-';
 			$("#file-upload-id option[value='remote']").remove();
 			$("#file-upload-id option[value='upload']").remove();
 			$('#file-upload-id').append("<option value='upload'>File upload</option>");
@@ -970,6 +1056,10 @@ ngApp.controller('myValidatorController', function($scope) {
 					$scope.select.datasetType.push("AF");
 					$scope.selectDatasetType('AF');
 				}
+				if ($scope.selectedOptionsAnnex3.includes("1")) {
+					$scope.select.datasetType.push("ACMF");
+					$scope.selectDatasetType('ACMF');
+				}
 				if ($scope.selectedOptionsAnnex3.includes("2")) {
 					$scope.select.datasetType.push("AM");
 					$scope.selectDatasetType('AM');
@@ -983,6 +1073,12 @@ ngApp.controller('myValidatorController', function($scope) {
 					$("#buildings-version-1").prop("checked", true);
 					$scope.selectSubBuildings();
 					$scope.selectDatasetType('BU2D');
+				}
+				if ($scope.selectedOptionsAnnex3.includes("5")) {
+					$scope.select.datasetType.push("ER");
+					$("#energy-version-1").prop("checked", true);
+					$scope.selectSubEnergy();
+					$scope.selectDatasetType('ERCOV');
 				}
 				if ($scope.selectedOptionsAnnex3.includes("6")) {
 					$scope.select.datasetType.push("EF");
@@ -1002,9 +1098,17 @@ ngApp.controller('myValidatorController', function($scope) {
 					$scope.selectSubLandUse();
 					$scope.selectDatasetType('ELU');
 				}
+				if ($scope.selectedOptionsAnnex3.includes("10")) {
+					$scope.select.datasetType.push("MR");
+					$scope.selectDatasetType('MR');
+				}
 				if ($scope.selectedOptionsAnnex3.includes("11")) {
 					$scope.select.datasetType.push("NZ");
 					$scope.selectDatasetType('NZ');
+				}
+				if ($scope.selectedOptionsAnnex3.includes("12")) {
+					$scope.select.datasetType.push("OF");
+					$scope.selectDatasetType('OF');
 				}
 				if ($scope.selectedOptionsAnnex3.includes("13")) {
 					$scope.select.datasetType.push("PD");
@@ -1165,6 +1269,20 @@ ngApp.controller('myValidatorController', function($scope) {
 		console.log($scope.select.subBuildings);
 	}
 
+	$scope.selectSubEnergy = function() {
+		$scope.select.subEnergy = [];
+		if (!$("#energy-version-1").prop("checked") && !$("#energy-version-2").prop("checked")) $("#energy-version-1").prop("checked", true);
+		if ($("#energy-version-1").prop("checked")) {
+			$scope.select.subEnergy.push("ERCOV");
+			$scope.selectDatasetType("ERCOV");
+		}
+		if ($("#energy-version-2").prop("checked")) {
+			$scope.select.subEnergy.push("ERVEC");
+			$scope.selectDatasetType("ERVEC");
+		}
+		console.log($scope.select.subEnergy);
+	}
+
 	$scope.selectSubLandUse = function() {
 		$scope.select.subLandUse = [];
 		if (!$("#landuse-version-1").prop("checked") && !$("#landuse-version-2").prop("checked") && !$("#landuse-version-3").prop("checked") && !$("#landuse-version-4").prop("checked")) $("#landuse-version-1").prop("checked", true);
@@ -1248,7 +1366,7 @@ ngApp.controller('myValidatorController', function($scope) {
 			$scope.select.metadataAdvancedInteroperability = true;
 		} else {
 			$("#metadata-records-1").prop("checked", true);
-			$scope.select.metadataRecords = "dataset";
+			$scope.select.metadataRecords = "metadata_dataset";
 			$("#metadata-20-dataset-options-1").prop("checked", true);
 			$("#metadata-20-dataset-options-2").prop("checked", true);
 			$("#metadata-20-dataset-options-3").prop("checked", true);
@@ -1868,6 +1986,19 @@ ngApp.controller('myValidatorController', function($scope) {
 			$("#dataset-am-options-3").prop("checked", true);
 			$scope.selectDatasetAnnexAMAdvanced('gml_application_schemas_areamanagement');
 		}
+		if (datasetType == 'ACMF') {
+			$scope.select.atLeastOneACMF = 0;
+			$("#dataset-acmf-options-10").prop("checked", true);
+			$scope.selectDatasetAnnexACMFAdvanced('reference_systems_atmospheric');
+			$("#dataset-acmf-options-8").prop("checked", true);
+			$scope.selectDatasetAnnexACMFAdvanced('information_accessibility_atmospheric');
+			$("#dataset-acmf-options-6").prop("checked", true);
+			$scope.selectDatasetAnnexACMFAdvanced('data_consistency_atmospheric');
+			$("#dataset-acmf-options-4").prop("checked", true);
+			$scope.selectDatasetAnnexACMFAdvanced('application_schema_atmospheric');
+			$("#dataset-acmf-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexACMFAdvanced('gml_application_schemas_atmospheric');
+		}
 		if (datasetType == 'BR') {
 			$scope.select.atLeastOneBR = 0;
 			$("#dataset-br-options-10").prop("checked", true);
@@ -1906,6 +2037,32 @@ ngApp.controller('myValidatorController', function($scope) {
 			$scope.selectDatasetAnnexBU3DAdvanced('application_schema_buildings_3d');
 			$("#dataset-bu3d-options-3").prop("checked", true);
 			$scope.selectDatasetAnnexBU3DAdvanced('gml_application_schemas_buildings');
+		}
+		if (datasetType == 'ERCOV') {
+			$scope.select.atLeastOneERCOV = 0;
+			$("#dataset-ercov-options-11").prop("checked", true);
+			$scope.selectDatasetAnnexERCOVAdvanced('reference_systems_energy');
+			$("#dataset-ercov-options-9").prop("checked", true);
+			$scope.selectDatasetAnnexERCOVAdvanced('information_accessibility_energy');
+			$("#dataset-ercov-options-7").prop("checked", true);
+			$scope.selectDatasetAnnexERCOVAdvanced('data_consistency_energy');
+			$("#dataset-ercov-options-5").prop("checked", true);
+			$scope.selectDatasetAnnexERCOVAdvanced('application_schema_energy_coverage');
+			$("#dataset-ercov-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexERCOVAdvanced('gml_application_schemas_energy');
+		}
+		if (datasetType == 'ERVEC') {
+			$scope.select.atLeastOneERVEC = 0;
+			$("#dataset-ervec-options-11").prop("checked", true);
+			$scope.selectDatasetAnnexERVECAdvanced('reference_systems_energy');
+			$("#dataset-ervec-options-9").prop("checked", true);
+			$scope.selectDatasetAnnexERVECAdvanced('information_accessibility_energy');
+			$("#dataset-ervec-options-7").prop("checked", true);
+			$scope.selectDatasetAnnexERVECAdvanced('data_consistency_energy');
+			$("#dataset-ervec-options-5").prop("checked", true);
+			$scope.selectDatasetAnnexERVECAdvanced('application_schema_energy_vector');
+			$("#dataset-ervec-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexERVECAdvanced('gml_application_schemas_energy');
 		}
 		if (datasetType == 'EF') {
 			$scope.select.atLeastOneEF = 0;
@@ -1998,6 +2155,19 @@ ngApp.controller('myValidatorController', function($scope) {
 			$("#dataset-selu-options-3").prop("checked", true);
 			$scope.selectDatasetAnnexSELUAdvanced('gml_application_schemas_landuse');
 		}
+		if (datasetType == 'MR') {
+			$scope.select.atLeastOneMR = 0;
+			$("#dataset-mr-options-10").prop("checked", true);
+			$scope.selectDatasetAnnexMRAdvanced('reference_systems_mineral');
+			$("#dataset-mr-options-8").prop("checked", true);
+			$scope.selectDatasetAnnexMRAdvanced('information_accessibility_mineral');
+			$("#dataset-mr-options-6").prop("checked", true);
+			$scope.selectDatasetAnnexMRAdvanced('data_consistency_mineral');
+			$("#dataset-mr-options-4").prop("checked", true);
+			$scope.selectDatasetAnnexMRAdvanced('application_schema_mineral');
+			$("#dataset-mr-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexMRAdvanced('gml_application_schemas_mineral');
+		}
 		if (datasetType == 'NZ') {
 			$scope.select.atLeastOneNZ = 0;
 			$("#dataset-nz-options-10").prop("checked", true);
@@ -2010,6 +2180,19 @@ ngApp.controller('myValidatorController', function($scope) {
 			$scope.selectDatasetAnnexNZAdvanced('application_schema_riskzones');
 			$("#dataset-nz-options-3").prop("checked", true);
 			$scope.selectDatasetAnnexNZAdvanced('gml_application_schemas_riskzones');
+		}
+		if (datasetType == 'OF') {
+			$scope.select.atLeastOneOF = 0;
+			$("#dataset-of-options-10").prop("checked", true);
+			$scope.selectDatasetAnnexOFAdvanced('reference_systems_oceanographic');
+			$("#dataset-of-options-8").prop("checked", true);
+			$scope.selectDatasetAnnexOFAdvanced('information_accessibility_oceanographic');
+			$("#dataset-of-options-6").prop("checked", true);
+			$scope.selectDatasetAnnexOFAdvanced('data_consistency_oceanographic');
+			$("#dataset-of-options-4").prop("checked", true);
+			$scope.selectDatasetAnnexOFAdvanced('application_schema_oceanographic');
+			$("#dataset-of-options-3").prop("checked", true);
+			$scope.selectDatasetAnnexOFAdvanced('gml_application_schemas_oceanographic');
 		}
 		if (datasetType == 'PD') {
 			$scope.select.atLeastOnePD = 0;
@@ -4097,6 +4280,77 @@ ngApp.controller('myValidatorController', function($scope) {
 		$scope.prefillLabel();
 	}
 
+	$scope.selectDatasetAnnexACMFAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-acmf-options-1").prop("checked");
+			$("#dataset-acmf-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-acmf-options-2").prop("checked");
+			$("#dataset-acmf-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_atmospheric') {
+			if ($("#dataset-acmf-options-4").prop("checked") == true) {
+				$("#dataset-acmf-options-3").prop("checked", true);
+			} else {
+				$("#dataset-acmf-options-3").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_atmospheric') {
+			if ($("#dataset-acmf-options-4").prop("checked") == true) {
+				$scope.select.atLeastOneACMF++;
+				$("#dataset-acmf-options-3").prop("checked", true);
+				$("#dataset-acmf-options-2").prop("checked", true);
+				$("#dataset-acmf-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneACMF--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-acmf-options-5").prop("checked");
+			$("#dataset-acmf-options-5").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_atmospheric') {
+			if ($("#dataset-acmf-options-6").prop("checked") == true) {
+				$scope.select.atLeastOneACMF++;
+				$("#dataset-acmf-options-5").prop("checked", true);
+				$("#dataset-acmf-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneACMF--;
+				$("#dataset-acmf-options-5").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-acmf-options-7").prop("checked");
+			$("#dataset-acmf-options-7").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_atmospheric') {
+			if ($("#dataset-acmf-options-8").prop("checked") == true) {
+				$scope.select.atLeastOneACMF++;
+				$("#dataset-acmf-options-7").prop("checked", true);
+				$("#dataset-acmf-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneACMF--;
+				$("#dataset-acmf-options-7").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-acmf-options-9").prop("checked");
+			$("#dataset-acmf-options-9").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_atmospheric') {
+			if ($("#dataset-acmf-options-10").prop("checked") == true) {
+				$scope.select.atLeastOneACMF++;
+				$("#dataset-acmf-options-9").prop("checked", true);
+				$("#dataset-acmf-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneACMF--;
+				$("#dataset-acmf-options-9").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
 	$scope.selectDatasetAnnexBRAdvanced = function(type) {
 		if (type == 'inspire_gml_encoding') {
 			var currState = $("#dataset-br-options-1").prop("checked");
@@ -4338,6 +4592,180 @@ ngApp.controller('myValidatorController', function($scope) {
 			} else {
 				$scope.select.atLeastOneBU3D--;
 				$("#dataset-bu3d-options-10").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
+	$scope.selectDatasetAnnexERCOVAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-ercov-options-1").prop("checked");
+			$("#dataset-ercov-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-ercov-options-2").prop("checked");
+			$("#dataset-ercov-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_energy') {
+			var currState = $("#dataset-ercov-options-3").prop("checked");
+			$("#dataset-ercov-options-3").prop("checked", true);
+			$("#dataset-ercov-options-2").prop("checked", true);
+			$("#dataset-ercov-options-1").prop("checked", true);
+		}
+		if (type == 'application_schema_energy') {
+			console.log($("#dataset-ercov-options-4").prop("checked"));
+			if ($("#dataset-ercov-options-5").prop("checked") == false) {
+				if ($("#dataset-ercov-options-4").prop("checked") == true) {
+					$scope.select.atLeastOneERCOV++;
+					$("#dataset-ercov-options-3").prop("checked", true);
+					$("#dataset-ercov-options-2").prop("checked", true);
+					$("#dataset-ercov-options-1").prop("checked", true);
+				} else {
+					$scope.select.atLeastOneERCOV--;
+					$("#dataset-ercov-options-3").prop("checked", true);
+				}
+			} else {
+				$("#dataset-ercov-options-4").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_energy_coverage') {
+			if ($("#dataset-ercov-options-5").prop("checked") == true) {
+				$scope.select.atLeastOneERCOV++;
+				$("#dataset-ercov-options-4").prop("checked", true);
+				$("#dataset-ercov-options-3").prop("checked", true);
+				$("#dataset-ercov-options-2").prop("checked", true);
+				$("#dataset-ercov-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneERCOV--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-ercov-options-6").prop("checked");
+			$("#dataset-ercov-options-6").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_energy') {
+			if ($("#dataset-ercov-options-7").prop("checked") == true) {
+				$scope.select.atLeastOneERCOV++;
+				$("#dataset-ercov-options-6").prop("checked", true);
+				$("#dataset-ercov-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneERCOV--;
+				$("#dataset-ercov-options-6").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-ercov-options-8").prop("checked");
+			$("#dataset-ercov-options-8").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_energy') {
+			if ($("#dataset-ercov-options-9").prop("checked") == true) {
+				$scope.select.atLeastOneERCOV++;
+				$("#dataset-ercov-options-8").prop("checked", true);
+				$("#dataset-ercov-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneERCOV--;
+				$("#dataset-ercov-options-8").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-ercov-options-10").prop("checked");
+			$("#dataset-ercov-options-10").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_energy') {
+			if ($("#dataset-ercov-options-11").prop("checked") == true) {
+				$scope.select.atLeastOneERCOV++;
+				$("#dataset-ercov-options-10").prop("checked", true);
+				$("#dataset-ercov-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneERCOV--;
+				$("#dataset-ercov-options-10").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
+	$scope.selectDatasetAnnexERVECAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-ervec-options-1").prop("checked");
+			$("#dataset-ervec-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-ervec-options-2").prop("checked");
+			$("#dataset-ervec-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_energy') {
+			var currState = $("#dataset-ervec-options-3").prop("checked");
+			$("#dataset-ervec-options-3").prop("checked", true);
+			$("#dataset-ervec-options-2").prop("checked", true);
+			$("#dataset-ervec-options-1").prop("checked", true);
+		}
+		if (type == 'application_schema_energy') {
+			console.log($("#dataset-ervec-options-4").prop("checked"));
+			if ($("#dataset-ervec-options-5").prop("checked") == false) {
+				if ($("#dataset-ervec-options-4").prop("checked") == true) {
+					$scope.select.atLeastOneERVEC++;
+					$("#dataset-ervec-options-3").prop("checked", true);
+					$("#dataset-ervec-options-2").prop("checked", true);
+					$("#dataset-ervec-options-1").prop("checked", true);
+				} else {
+					$scope.select.atLeastOneERVEC--;
+					$("#dataset-ervec-options-3").prop("checked", true);
+				}
+			} else {
+				$("#dataset-ervec-options-4").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_energy_vector') {
+			if ($("#dataset-ervec-options-5").prop("checked") == true) {
+				$scope.select.atLeastOneERVEC++;
+				$("#dataset-ervec-options-4").prop("checked", true);
+				$("#dataset-ervec-options-3").prop("checked", true);
+				$("#dataset-ervec-options-2").prop("checked", true);
+				$("#dataset-ervec-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneERVEC--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-ervec-options-6").prop("checked");
+			$("#dataset-ervec-options-6").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_energy') {
+			if ($("#dataset-ervec-options-7").prop("checked") == true) {
+				$scope.select.atLeastOneERVEC++;
+				$("#dataset-ervec-options-6").prop("checked", true);
+				$("#dataset-ervec-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneERVEC--;
+				$("#dataset-ervec-options-6").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-ervec-options-8").prop("checked");
+			$("#dataset-ervec-options-8").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_energy') {
+			if ($("#dataset-ervec-options-9").prop("checked") == true) {
+				$scope.select.atLeastOneERVEC++;
+				$("#dataset-ervec-options-8").prop("checked", true);
+				$("#dataset-ervec-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneERVEC--;
+				$("#dataset-ervec-options-8").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-ervec-options-10").prop("checked");
+			$("#dataset-ervec-options-10").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_energy') {
+			if ($("#dataset-ervec-options-11").prop("checked") == true) {
+				$scope.select.atLeastOneERVEC++;
+				$("#dataset-ervec-options-10").prop("checked", true);
+				$("#dataset-ervec-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneERVEC--;
+				$("#dataset-ervec-options-10").prop("checked", false);
 			}
 		}
 		$scope.prefillLabel();
@@ -4840,6 +5268,77 @@ ngApp.controller('myValidatorController', function($scope) {
 		$scope.prefillLabel();
 	}
 
+	$scope.selectDatasetAnnexMRAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-mr-options-1").prop("checked");
+			$("#dataset-mr-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-mr-options-2").prop("checked");
+			$("#dataset-mr-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_mineral') {
+			if ($("#dataset-mr-options-4").prop("checked") == true) {
+				$("#dataset-mr-options-3").prop("checked", true);
+			} else {
+				$("#dataset-mr-options-3").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_mineral') {
+			if ($("#dataset-mr-options-4").prop("checked") == true) {
+				$scope.select.atLeastOneMR++;
+				$("#dataset-mr-options-3").prop("checked", true);
+				$("#dataset-mr-options-2").prop("checked", true);
+				$("#dataset-mr-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneMR--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-mr-options-5").prop("checked");
+			$("#dataset-mr-options-5").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_mineral') {
+			if ($("#dataset-mr-options-6").prop("checked") == true) {
+				$scope.select.atLeastOneMR++;
+				$("#dataset-mr-options-5").prop("checked", true);
+				$("#dataset-mr-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneMR--;
+				$("#dataset-mr-options-5").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-mr-options-7").prop("checked");
+			$("#dataset-mr-options-7").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_mineral') {
+			if ($("#dataset-mr-options-8").prop("checked") == true) {
+				$scope.select.atLeastOneMR++;
+				$("#dataset-mr-options-7").prop("checked", true);
+				$("#dataset-mr-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneMR--;
+				$("#dataset-mr-options-7").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-mr-options-9").prop("checked");
+			$("#dataset-mr-options-9").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_mineral') {
+			if ($("#dataset-mr-options-10").prop("checked") == true) {
+				$scope.select.atLeastOneMR++;
+				$("#dataset-mr-options-9").prop("checked", true);
+				$("#dataset-mr-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneMR--;
+				$("#dataset-mr-options-9").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
 	$scope.selectDatasetAnnexNZAdvanced = function(type) {
 		if (type == 'inspire_gml_encoding') {
 			var currState = $("#dataset-nz-options-1").prop("checked");
@@ -4906,6 +5405,77 @@ ngApp.controller('myValidatorController', function($scope) {
 			} else {
 				$scope.select.atLeastOneNZ--;
 				$("#dataset-nz-options-9").prop("checked", false);
+			}
+		}
+		$scope.prefillLabel();
+	}
+
+	$scope.selectDatasetAnnexOFAdvanced = function(type) {
+		if (type == 'inspire_gml_encoding') {
+			var currState = $("#dataset-of-options-1").prop("checked");
+			$("#dataset-of-options-1").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas') {
+			var currState = $("#dataset-of-options-2").prop("checked");
+			$("#dataset-of-options-2").prop("checked", !currState);
+		}
+		if (type == 'gml_application_schemas_oceanographic') {
+			if ($("#dataset-of-options-4").prop("checked") == true) {
+				$("#dataset-of-options-3").prop("checked", true);
+			} else {
+				$("#dataset-of-options-3").prop("checked", true);
+			}
+		}
+		if (type == 'application_schema_oceanographic') {
+			if ($("#dataset-of-options-4").prop("checked") == true) {
+				$scope.select.atLeastOneOF++;
+				$("#dataset-of-options-3").prop("checked", true);
+				$("#dataset-of-options-2").prop("checked", true);
+				$("#dataset-of-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneOF--;
+			}
+		}
+		if (type == 'data_consistency') {
+			var currState = $("#dataset-of-options-5").prop("checked");
+			$("#dataset-of-options-5").prop("checked", !currState);
+		}
+		if (type == 'data_consistency_oceanographic') {
+			if ($("#dataset-of-options-6").prop("checked") == true) {
+				$scope.select.atLeastOneOF++;
+				$("#dataset-of-options-5").prop("checked", true);
+				$("#dataset-of-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneOF--;
+				$("#dataset-of-options-5").prop("checked", false);
+			}
+		}
+		if (type == 'information_accessibility') {
+			var currState = $("#dataset-of-options-7").prop("checked");
+			$("#dataset-of-options-7").prop("checked", !currState);
+		}
+		if (type == 'information_accessibility_oceanographic') {
+			if ($("#dataset-of-options-8").prop("checked") == true) {
+				$scope.select.atLeastOneOF++;
+				$("#dataset-of-options-7").prop("checked", true);
+				$("#dataset-of-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneOF--;
+				$("#dataset-of-options-7").prop("checked", false);
+			}
+		}
+		if (type == 'reference_systems') {
+			var currState = $("#dataset-of-options-9").prop("checked");
+			$("#dataset-of-options-9").prop("checked", !currState);
+		}
+		if (type == 'reference_systems_oceanographic') {
+			if ($("#dataset-of-options-10").prop("checked") == true) {
+				$scope.select.atLeastOneOF++;
+				$("#dataset-of-options-9").prop("checked", true);
+				$("#dataset-of-options-1").prop("checked", true);
+			} else {
+				$scope.select.atLeastOneOF--;
+				$("#dataset-of-options-9").prop("checked", false);
 			}
 		}
 		$scope.prefillLabel();
