@@ -469,6 +469,10 @@
                     value="WCS" aria-describedby="helper-4" ng-click="selectDownloadServiceType('WCS')"/><label for="downloadservice-version-4" class="ecl-radio__label"><span
                       class="ecl-radio__box"></span>Web Coverage Service (WCS)</label>
                 </div>
+                <div class="ecl-radio"><input type="radio" id="downloadservice-version-5" name="downloadservice-version" class="ecl-radio__input"
+                    value="WCS" aria-describedby="helper-4" ng-click="selectDownloadServiceType('OGC')"/><label for="downloadservice-version-5" class="ecl-radio__label"><span
+                      class="ecl-radio__box"></span>OGC API - Features</label>
+                </div>
             </fieldset>
           </div>
 
@@ -554,6 +558,16 @@
                           class="ecl-checkbox__icon ecl-icon ecl-icon--s">
                           <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
                         </svg></span>Conformance Class 'Download Service WCS Core' (<a target="_linkTest" href="http://inspire.ec.europa.eu/id/ats/download-wcs/1.0/wcs-core">source</a>)</label>
+                  </div>
+                </fieldset>
+                <fieldset aria-describedby="checkbox-default-helper" class="ecl-form-group" ng-show="select.downloadServiceType == 'OGC'">
+                  <legend class="ecl-form-label"><br/>Select the conformance classes to be assessed</legend>
+                  <div class="ecl-checkbox"><input type="checkbox" class="ecl-checkbox__input" id="downloadservice-ogc-options-1"
+                      name="checkbox-default" value="inspireprofile" ng-click="selectViewDownloadServiceAdvanced('ogc')"/><label class="ecl-checkbox__label" for="downloadservice-ogc-options-1"><span
+                        class="ecl-checkbox__box"><svg focusable="false" aria-hidden="true"
+                          class="ecl-checkbox__icon ecl-icon ecl-icon--s">
+                          <use xlink:href="../component-library/dist/sprites/icons.svg#ui--check"></use>
+                        </svg></span>Conformance Class 'OGC API - Features' (<a target="_linkTest" href="https://cite.opengeospatial.org/teamengine/about/ogcapi-features-1.0/1.0/site/">source</a>)</label>
                   </div>
                 </fieldset>
               </div>
