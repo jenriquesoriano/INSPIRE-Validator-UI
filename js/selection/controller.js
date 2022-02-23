@@ -1,6 +1,6 @@
 ngApp.controller('myValidatorController', function($scope) {
 
-	$scope.urlValidator = serverURL;
+	$scope.urlValidator = serverDirectURL;
 	$scope.urlCaptcha = serverCaptchaURL;
 	$scope.captchaEnabled = captchaEnabled;
 	$scope.betaBanner = betaBanner;
