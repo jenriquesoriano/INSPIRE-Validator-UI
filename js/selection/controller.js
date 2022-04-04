@@ -803,7 +803,7 @@ ngApp.controller('myValidatorController', function($scope) {
 		if (testSuiteId == "EIDc837298f-a10e-42d1-88f2-f1415cbbb463") testSuiteDesc = "Conformance Class Discovery Service CSW";
 		// DATASET
 		if (($scope.select.datasetType == 'CCS') && (Array.isArray(testSuiteId))) testSuiteDesc = "Common conformance classes";
-		if (($scope.select.datasetType.includes('AD')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex I - Addressed (AD)";
+		if (($scope.select.datasetType.includes('AD')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex I - Addresses (AD)";
 		if (($scope.select.datasetType.includes('AU')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex I - Administrative Units (AU)";
 		if (($scope.select.datasetType.includes('CP')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex I - Cadastral parcels (CP)";
 		if (($scope.select.datasetType.includes('GN')) && (Array.isArray(testSuiteId))) testSuiteDesc = "Annex I - Geographical names (GN)";
