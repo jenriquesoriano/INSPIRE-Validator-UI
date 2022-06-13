@@ -8,3 +8,4 @@ var serverRealURL = "http://staging-inspire-validator.eu-west-1.elasticbeanstalk
 var serverDirectURL = "http://staging-inspire-validator.eu-west-1.elasticbeanstalk.com/validator/v2/";
 var serverCaptchaURL = "http://staging-inspire-validator.eu-west-1.elasticbeanstalk.com/validator/captcha/verify.php";
 var serverToken = "";
+var swaggerURL = "http://staging-inspire-validator.eu-west-1.elasticbeanstalk.com/validator/swagger-ui.html"

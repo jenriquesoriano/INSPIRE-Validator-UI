@@ -628,10 +628,13 @@ ngApp.controller('myValidatorController', function($scope) {
 				if ($("#dataset-usasgs-options-5").prop("checked") == true) arrayTestsuiteid.push("EID042b6fb7-14ea-42b9-81df-3c1fdf8a960c");
 
 				if (($("#dataset-usasgs-options-11").prop("checked") == false) && ($("#dataset-usasgs-options-9").prop("checked") == false) && ($("#dataset-usasgs-options-7").prop("checked") == false) && ($("#dataset-usasgs-options-5").prop("checked") == false)) {
+					/*
 					if ($("#dataset-usasgs-options-4").prop("checked") == true) arrayTestsuiteid.push("EID127eed5c-621d-4bbe-8633-cdc21c25d664");
 					if ($("#dataset-usasgs-options-4").prop("checked") == false) {
 						if ($("#dataset-usasgs-options-3").prop("checked") == true) arrayTestsuiteid.push("EID59c0e67e-4add-40a8-aee2-78c8fb5d2618");
 					}
+					*/
+					if ($("#dataset-usasgs-options-3").prop("checked") == true) arrayTestsuiteid.push("EID59c0e67e-4add-40a8-aee2-78c8fb5d2618");
 				}
 			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("US")) && $scope.select.subUtility.includes("USEN")) {
@@ -654,10 +657,13 @@ ngApp.controller('myValidatorController', function($scope) {
 				if ($("#dataset-usemf-options-5").prop("checked") == true) arrayTestsuiteid.push("EID955c8cf0-0608-4586-9866-316766d79bc1");
 
 				if (($("#dataset-usemf-options-11").prop("checked") == false) && ($("#dataset-usemf-options-9").prop("checked") == false) && ($("#dataset-usemf-options-7").prop("checked") == false) && ($("#dataset-usemf-options-5").prop("checked") == false)) {
+					/*
 					if ($("#dataset-usemf-options-4").prop("checked") == true) arrayTestsuiteid.push("EID127eed5c-621d-4bbe-8633-cdc21c25d664");
 					if ($("#dataset-usemf-options-4").prop("checked") == false) {
 						if ($("#dataset-usemf-options-3").prop("checked") == true) arrayTestsuiteid.push("EID59c0e67e-4add-40a8-aee2-78c8fb5d2618");
 					}
+					*/
+					if ($("#dataset-usemf-options-3").prop("checked") == true) arrayTestsuiteid.push("EID59c0e67e-4add-40a8-aee2-78c8fb5d2618");
 				}
 			}
 			if (($scope.select.typeResource == "dataset") && ($scope.select.datasetType.includes("US")) && $scope.select.subUtility.includes("USOGCN")) {
@@ -6082,6 +6088,7 @@ ngApp.controller('myValidatorController', function($scope) {
 			$("#dataset-usasgs-options-2").prop("checked", true);
 			$("#dataset-usasgs-options-1").prop("checked", true);
 		}
+		/*
 		if (type == 'application_schema_common') {
 			console.log($("#dataset-usasgs-options-4").prop("checked"));
 			if ($("#dataset-usasgs-options-5").prop("checked") == false) {
@@ -6098,10 +6105,13 @@ ngApp.controller('myValidatorController', function($scope) {
 				$("#dataset-usasgs-options-4").prop("checked", true);
 			}
 		}
+		*/
 		if (type == 'application_schema_utility') {
 			if ($("#dataset-usasgs-options-5").prop("checked") == true) {
 				$scope.select.atLeastOneUSASGS++;
+				/*
 				$("#dataset-usasgs-options-4").prop("checked", true);
+				*/
 				$("#dataset-usasgs-options-3").prop("checked", true);
 				$("#dataset-usasgs-options-2").prop("checked", true);
 				$("#dataset-usasgs-options-1").prop("checked", true);
@@ -6256,6 +6266,7 @@ ngApp.controller('myValidatorController', function($scope) {
 			$("#dataset-usemf-options-2").prop("checked", true);
 			$("#dataset-usemf-options-1").prop("checked", true);
 		}
+		/*
 		if (type == 'application_schema_common') {
 			console.log($("#dataset-usemf-options-4").prop("checked"));
 			if ($("#dataset-usemf-options-5").prop("checked") == false) {
@@ -6272,6 +6283,7 @@ ngApp.controller('myValidatorController', function($scope) {
 				$("#dataset-usemf-options-4").prop("checked", true);
 			}
 		}
+		*/
 		if (type == 'application_schema_environmental') {
 			if ($("#dataset-usemf-options-5").prop("checked") == true) {
 				$scope.select.atLeastOneUSEMF++;
