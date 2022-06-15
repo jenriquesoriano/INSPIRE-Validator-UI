@@ -12,12 +12,12 @@
       cl.remove('no-js');
       cl.add('has-js');
     </script>
-    <!-- <script src="https://ec.europa.eu/wel/cookie-consent/consent.js"></script> -->
     <link rel="stylesheet" href="../lib/jquery-ui/jquery-ui.min.css">
     <script src="../lib/jquery/jquery-3.6.0.min.js"></script>
     <script src="../lib/jquery-ui/jquery-ui.min.js"></script>
     <script src="../js/config.js"></script>
     <script src="../js/home/controller.js"></script>
+	<script defer src="https://europa.eu/webtools/load.js" type="text/javascript"></script> 
 
 	
 	
@@ -66,6 +66,14 @@
     <link type="text/css" rel="stylesheet" href="../css/validator.css" />
   </head>
   <body>
+  
+	<script type="application/json">
+	{
+		"utility" : "cck",
+		"url": {
+			"en": "https://ec.europa.eu/info/cookies_en"
+		}
+	}</script>
 
     <!-- paste the markup from the template here -->
     <header data-ecl-auto-init="SiteHeaderStandardised" class="ecl-site-header-standardised">
