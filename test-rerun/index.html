@@ -44,13 +44,19 @@
   </head>
   <body ng-app="myNgValidator">
 
-	<script type="application/json">
+    <script type="application/json">
+		{"utility" : "cck"}
+	</script>
+	<!-- Analytics with  EU CCK v2 -->
+    <script type="application/json">
 	{
-		"utility" : "cck",
-		"url": {
-			"en": "https://ec.europa.eu/info/cookies_en"
-		}
-	}</script>
+		"utility" : "analytics",
+		"siteID" : "84c65ccc-9997-4cfa-91f3-ea0ef9d059b1",
+		"instance" : ["inspire.ec.europa.eu"],
+		"instance":"ec",
+		"mode":"auto"
+	}
+    </script>
 
     <!-- paste the markup from the template here -->
     <header data-ecl-auto-init="SiteHeaderStandardised" class="ecl-site-header-standardised">
