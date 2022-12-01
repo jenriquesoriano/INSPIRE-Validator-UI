@@ -1066,6 +1066,7 @@ ngApp.controller('myValidatorController', function($scope) {
 					if (Array.isArray(item.testTasks.TestTask) == false) {
 						var resourceType = item.testTasks.TestTask.executableTestSuite.href;
 						resourceType = resourceType.replace("//v2", "/v2");
+						resourceType = resourceType.replace("https", "http");
 						resourceType = resourceType.replace($scope.urlValidator + "ExecutableTestSuites/", "");
 						resourceType = resourceType.replace(".json", "");
 						resourceType = "EID" + resourceType;
@@ -1075,6 +1076,7 @@ ngApp.controller('myValidatorController', function($scope) {
 						for (var i = 0; i < numTestSuites; i++) {
 							var resourceType = item.testTasks.TestTask[i].executableTestSuite.href;
 							resourceType = resourceType.replace("//v2", "/v2");
+							resourceType = resourceType.replace("https", "http");
 							resourceType = resourceType.replace($scope.urlValidator + "ExecutableTestSuites/", "");
 							resourceType = resourceType.replace(".json", "");
 							resourceType = "EID" + resourceType;
