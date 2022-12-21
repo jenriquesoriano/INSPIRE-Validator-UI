@@ -1667,7 +1667,6 @@ ngApp.controller('myValidatorController', function($scope) {
 		}
 		if (downloadSubServiceType == "direct3") {
 			$("#downloadservice-direct-options-1").prop("checked", true);
-			$("#downloadservice-direct-options-2").prop("checked", true);
 			$("#downloadservice-direct-options-3").prop("checked", true);
 		}
 		if (downloadSubServiceType == "predefined") $("#downloadservice-predefined-options-1").prop("checked", true);
@@ -1681,13 +1680,10 @@ ngApp.controller('myValidatorController', function($scope) {
 		}
 		if (type != 'predefined') {
 			$scope.select.downloadSubServiceType = "direct1";
-			console.log($("#downloadservice-direct-options-2").prop("checked"));
 			if ($("#downloadservice-direct-options-3").prop("checked")) {
 				$scope.select.downloadSubServiceType = "direct3";
-				if ($("#downloadservice-direct-options-2").prop("checked") != true) $("#downloadservice-direct-options-2").prop("checked", true);
 			} else {
 				$scope.select.downloadSubServiceType = "direct1";
-				$("#downloadservice-direct-options-2").prop("checked", false);
 			}
 		}
 
