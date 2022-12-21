@@ -6669,22 +6669,27 @@ $scope.sendRunRequest = function() {
 			}
 		} else {
 			if (remoteFile != "") {
-				if ($scope.select.typeResource == "metadata"){
-				    var params = remoteFile.split("?");
-				    var properties=[]
-				    params=params[1]
-				    params=params.split("&")
-				    var i=0
-				    while (i<params.length){
-				        var tempParams=params[i]
-				        properties.push(tempParams.split("=")[0])
-				        i=i+1
-				        }
-				    if(!properties.includes("outputSchema")){
-				        remoteFile=remoteFile+"&outputSchema=http://www.isotc211.org/2005/gmd"}
-				    if(!properties.includes("elementSetName")){
-				        remoteFile=remoteFile+"&elementSetName=full"}
-               		}
+				if ($scope.select.typeResource == "metadata") {					
+				    var params = remoteFile.split("?");	
+				    if (params.length == 1) {
+				    	remoteFile += "?outputSchema=http://www.isotc211.org/2005/gmd&elementSetName=full";
+				    } else {				    	
+					    params = params[1].split("&");
+					    var properties = [];
+					    var i = 0;
+					    while (i < params.length) {
+					        var tempParams = params[i];
+					        properties.push(tempParams.split("=")[0]);
+					        i += 1;
+					    }
+					    if (!properties.includes("outputSchema")) { 
+					        remoteFile += "&outputSchema=http://www.isotc211.org/2005/gmd";
+					    }
+					    if (!properties.includes("elementSetName")) {
+					        remoteFile += "&elementSetName=full";
+					    }
+				    }
+               	}
 				var txtUsername = $("#text-input-username").val();
 				var txtPassword = $("#text-input-password").val();
 				if ($('#file-upload-id').text().includes("Service URL")) {
