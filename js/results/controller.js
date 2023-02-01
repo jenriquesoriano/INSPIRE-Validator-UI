@@ -4,6 +4,7 @@ ngApp.controller('myValidatorController', function($scope) {
 	$scope.betaBanner = betaBanner;
 	$scope.labelStaging = labelStaging;
 	$scope.serverToken = serverToken;
+	$scope.timeUpMessage = timeUpMessage;
 
 	// Show/Hide Beta banner
 	if ($scope.betaBanner == true) {
