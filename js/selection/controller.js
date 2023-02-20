@@ -169,6 +169,7 @@ ngApp.controller('myValidatorController', function($scope) {
 			console.log($scope.select.typeResource);
 			console.log($scope.select.downloadServiceType);
 			console.log($scope.select.downloadSubServiceType);
+			if (($scope.select.typeResource == "downloadservice") && ($scope.select.downloadServiceType == "WFS") && ($scope.select.downloadSubServiceType == "direct23")) $scope.restservice.testsuiteid = ["EIDed2d3501-d700-4ff9-b9bf-070dece8ddbd","EID174edf55-699b-446c-968c-1892a4d8d5bd"];
 			if (($scope.select.typeResource == "downloadservice") && ($scope.select.downloadServiceType == "WFS") && ($scope.select.downloadSubServiceType == "direct3")) $scope.restservice.testsuiteid = "EIDed2d3501-d700-4ff9-b9bf-070dece8ddbd";
 			if (($scope.select.typeResource == "downloadservice") && ($scope.select.downloadServiceType == "WFS") && ($scope.select.downloadSubServiceType == "direct2")) $scope.restservice.testsuiteid = "EID174edf55-699b-446c-968c-1892a4d8d5bd";
 			if (($scope.select.typeResource == "downloadservice") && ($scope.select.downloadServiceType == "WFS") && ($scope.select.downloadSubServiceType == "direct1") && ($scope.environment == "PROD")) $scope.restservice.testsuiteid = "EID85df0f3f-f55a-3944-a88f-f1cb4763336d";
@@ -1661,6 +1662,11 @@ ngApp.controller('myValidatorController', function($scope) {
 
 	$scope.selectDownloadWFSServiceType = function(downloadSubServiceType) {
 		$scope.select.downloadSubServiceType = downloadSubServiceType;
+		if (downloadSubServiceType == "direct23") {
+			$("#downloadservice-direct-options-1").prop("checked", true);
+			$("#downloadservice-direct-options-2").prop("checked", true);
+			$("#downloadservice-direct-options-3").prop("checked", true);
+		}
 		if (downloadSubServiceType == "direct2") {
 			$("#downloadservice-direct-options-1").prop("checked", true);
 			$("#downloadservice-direct-options-2").prop("checked", true);
@@ -1680,11 +1686,15 @@ ngApp.controller('myValidatorController', function($scope) {
 		}
 		if (type != 'predefined') {
 			$scope.select.downloadSubServiceType = "direct1";
-			if ($("#downloadservice-direct-options-3").prop("checked")) {
+			if ($("#downloadservice-direct-options-3").prop("checked") && $("#downloadservice-direct-options-2").prop("checked")) {
+				$scope.select.downloadSubServiceType = "direct23";
+			} 
+			else if ($("#downloadservice-direct-options-3").prop("checked")) {
 				$scope.select.downloadSubServiceType = "direct3";
-			} else {
-				$scope.select.downloadSubServiceType = "direct1";
-			}
+			} 
+			else if ($("#downloadservice-direct-options-2").prop("checked")) {
+				$scope.select.downloadSubServiceType = "direct2";
+			} 
 		}
 
 		//$("#downloadservice-direct-options-2").prop("checked", true);
