@@ -1474,13 +1474,9 @@ ngApp.controller('myValidatorController', function($scope) {
 			$("#metadata-20-dataset-options-1").prop("checked", true);
 			$("#metadata-20-dataset-options-3").prop("checked", false);
 		} else {
-			if ($("#metadata-20-dataset-options-5").prop("checked") == true) {
-				$("#metadata-20-dataset-options-2").prop("checked", true);
-				$("#metadata-20-dataset-options-4").prop("checked", true);
-			} else {
-				$("#metadata-20-dataset-options-3").prop("checked", false);
-				$("#metadata-20-dataset-options-4").prop("checked", false);
-			}
+			$("#metadata-20-dataset-options-3").prop("checked", false);
+			$("#metadata-20-dataset-options-4").prop("checked", false);
+			$("#metadata-20-dataset-options-5").prop("checked", false);
 			$("#metadata-20-dataset-options-6").prop("checked", false);
 		}
 		$scope.updateDataSet();
@@ -1504,8 +1500,6 @@ ngApp.controller('myValidatorController', function($scope) {
 			if ($("#metadata-20-dataset-options-5").prop("checked") == true) {
 				$("#metadata-20-dataset-options-1").prop("checked", true);
 				$("#metadata-20-dataset-options-2").prop("checked", true);
-				$("#metadata-20-dataset-options-3").prop("checked", true);
-				$("#metadata-20-dataset-options-4").prop("checked", true);
 			}
 		}
 		$scope.updateDataSet();
@@ -1516,8 +1510,11 @@ ngApp.controller('myValidatorController', function($scope) {
 		if ($("#metadata-20-dataset-options-5").prop("checked") == true) {
 			$("#metadata-20-dataset-options-1").prop("checked", true);
 			$("#metadata-20-dataset-options-2").prop("checked", true);
-			$("#metadata-20-dataset-options-3").prop("checked", true);
-			$("#metadata-20-dataset-options-4").prop("checked", true);
+		} else {
+			if ($("#metadata-20-dataset-options-4").prop("checked") == true) {
+				$("#metadata-20-dataset-options-1").prop("checked", true);
+				$("#metadata-20-dataset-options-2").prop("checked", true);
+			}
 		}
 		$scope.updateDataSet();
 		$scope.prefillLabel();
